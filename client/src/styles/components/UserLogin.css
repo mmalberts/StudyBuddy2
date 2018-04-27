@@ -1,0 +1,77 @@
+/* ------------------------------------ GENERAL */
+
+div.loginpanel {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 650px;
+}
+
+div#loginbox {
+	margin: auto 25px;
+	padding: 10px 25px !important;
+  	box-sizing: border-box;
+	border-radius: 10px;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    font-family: "Quicksand", sans-serif;
+	font-size: 15px;
+}
+
+div#signup, div#login {
+	width: 100%; 
+	margin: 0px auto;
+}
+
+/* ------------------------------------ BUTTONS */
+
+div#buttons {
+	margin-bottom: 40px;
+	padding: 20px !important;
+}
+
+button.main {
+	position: absolute;
+	top: 10px;
+	left: 60px;
+	font-size: 50px !important;
+	background-color: transparent;
+	color: #ffffff;
+}
+
+button.sideline {
+	position: absolute;
+	top: 30px;
+	right: 70px;
+	padding: 5px 10px;
+	font-weight: bold;
+	font-size: 20px !important;
+	background-color: #ffffff !important;
+	color: #78c9b1 !important;
+}
+
+button.sideline:hover {
+	cursor: pointer;
+}
+
+button.send {
+	width: 75%;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #ffffff;
+	border-radius: 5px;
+	color: #78c9b1;
+}
+
+/* ------------------------------------ MEDIA QUERIES */
+
+/* large devices <1200px */
+@media (max-width: 1199px) { 
+	div.loginpanel {
+		min-width: auto;
+	}
+}

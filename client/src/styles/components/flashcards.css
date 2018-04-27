@@ -1,0 +1,83 @@
+/* ------------------------------------ GENERAL */
+
+h2.dashboard {
+	margin-top: 100px;
+}
+
+div.flashcard-panel {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+div.cardbox {
+	display: inline-block;
+	overflow: hidden;
+	padding: 10px;
+	background: transparent;
+}
+
+div.card {
+	padding: 25px;
+	border: none;
+	border-radius: 10px;
+	min-height: 250px;
+}
+
+/* ------------------------------------ BACKGROUNDS */
+
+.card-default {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.card-vocab {
+	background-image: url("https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixlib=rb-0.3.5&s=fe2f94cb8243ca4414e4ab231462999d&auto=format&fit=crop&w=1267&q=80");
+}
+
+.card-reading {
+	background-image: url("https://images.unsplash.com/photo-1473492201326-7c01dd2e596b?ixlib=rb-0.3.5&s=25165df719570461f7dc2be8a75a74bb&auto=format&fit=crop&w=1951&q=80");
+}
+
+.card-astro {
+	background-image: url("https://cdn3.nextinpact.com/dlx/68747470733A2F2F63646E322E6E657874696E706163742E636F6D2F696D616765732F62642F776964652D6C696E6B65642D6D656469612F31343539322E6A7067");
+}
+
+.card-chem {
+	background-image: url("http://www.just.edu.jo/assets/deps/images/science/Chemistry.jpg");
+}
+
+.card-math {
+	background-image: url("https://science.rpi.edu/sites/default/files/math_banner_0_0.jpg");
+}
+
+/* ------------------------------------ BUTTONS */
+
+button.card-title {
+	position: absolute;
+	bottom: 10px;
+	padding: 5px 15px;
+	border-radius: 25px;
+	cursor: pointer;
+}
+
+button.card-fill {
+	margin: auto auto;
+	background-color: transparent;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+button.delete {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	padding: 5px 13px;
+	border-radius: 100px;
+}
+
+button.delete:hover {
+	background: #ffffff;
+	color: #78c9b1;
+}
