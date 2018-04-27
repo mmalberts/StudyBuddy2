@@ -1,0 +1,40 @@
+/* ------------------------------------ ELEMENTS */
+
+div.about {
+    margin: 100px 35px;
+}
+
+button.set-title {
+    display: inline-block;
+    padding: 7px 40px;
+    font-size: 40px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-transform: lowercase;
+}
+
+div.description {
+    display: block;
+    width: 100%;
+    margin-top: 25px;
+    margin-right: 25px !important;
+    padding: 15px 25px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #78c9b1;
+    border-radius: 10px;
+}
+
+button.continue {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 5px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-transform: lowercase;
+    text-align: right;
+}
