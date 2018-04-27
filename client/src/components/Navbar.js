@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class Navbar extends React.Component {
   state={
@@ -9,7 +8,7 @@ class Navbar extends React.Component {
   }
 
   onClick() {
-    if (this.state.showMenu == true) {
+    if (this.state.showMenu === true) {
       this.setState({ showMenu: false });
     } else {
       this.setState({ showMenu: true });

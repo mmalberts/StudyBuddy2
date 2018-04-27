@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch, Link, withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class UserLogin extends React.Component{
 
@@ -24,7 +23,7 @@ class UserLogin extends React.Component{
   renderSwitch = (word) => {
     var signup, login;
 
-    if (word == "login") {
+    if (word === "login") {
       signup = false;
       login = true;
     } else {
