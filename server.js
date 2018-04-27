@@ -2,12 +2,11 @@
 var path = require("path");
 var bodyParser = require("body-parser");
 var express = require("express");
-var reload = require("reload");
-var publicPath = path.join(__dirname, 'public');
+var publicPath = path.join(__dirname, "client/public");
 
 // initializes Express.js server and defines port
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 // initializes Sequelize models
 var db = require("./models");
@@ -19,8 +18,8 @@ app.use(bodyParser.json());
 //loads static files
 app.use(express.static(publicPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'))
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"))
 })
 
 // imports routes
