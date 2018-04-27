@@ -1,0 +1,75 @@
+/* ------------------------------------ HEADER AND NAVIGATION */
+
+div.navbar-light {
+    background: #ffffff;
+    color: #78c9b1;
+}
+
+h1.logo-dark {
+    margin: 10px;
+    font-size: 35px;
+}
+
+div.nav-right {
+    position: absolute;
+    display: inline-block;
+    right: 30px;
+}
+
+div.nav-opened {
+    display: none;
+}
+
+p.welcome {
+    display: inline;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+button.nav-button {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+button#collapse {
+    display: none;
+    font-size: 35px;
+}
+
+/* ------------------------------------ MEDIA QUERIES */
+
+/* large devices <1200px */
+@media (max-width: 1199px) { 
+}
+
+/* medium devices <992px */
+@media (max-width: 991px) { 
+}
+
+/* small devices <768px */
+@media (max-width: 767px) { 
+    p.welcome {
+        display: none;
+    }
+}
+
+/* tiny devices < 576px */
+@media (max-width: 575px) { 
+    button#collapse {
+        display: inline-block;
+    }
+
+    div.nav-right {
+        display: none;
+    }
+
+    div.nav-opened {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-left: 10px;
+        padding-bottom: 10px;
+        background-color: #ffffff;
+        text-align: left;
+    }
+}
