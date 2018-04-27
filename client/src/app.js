@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom';
-import StudyBuddy from './Router/StudyBuddy';
-import '../src/styles/style.css';
-import '../src/styles/components/Header.css';
-import '../src/styles/components/UserLogin.css';
-import '../src/styles/components/Navbar.css';
-import './styles/components/flashcards.css';
-import './styles/components/About.css';
-import './styles/components/Add.css';
-import './styles/components/questions.css';
+import {BrowserRouter , Route, Switch} from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import Dashboard from './components/dashboard';
+import SetPage from './components/SetPage';
+import QuestionPage from './components/QuestionPage';
+import Add from './components/Add';
+import Doesnotexist from './components/Doesnotexist';
 
-ReactDOM.render(<StudyBuddy />, document.getElementById('app')); 
+
+const App = () => (
+  <BrowserRouter>
+   <Switch>
+      <Route path="/" component ={LandingPage} exact={true} />
+      <Route path="/dashboard" component ={Dashboard} />
+      <Route path="/setpage" component ={SetPage} /> 
+      <Route path="/questionpage" component ={QuestionPage} />
+      <Route path="/add" component ={Add} /> 
+      <Route component={Doesnotexist} />    
+   </Switch>
+  </BrowserRouter>
+);
+
+export default App;
