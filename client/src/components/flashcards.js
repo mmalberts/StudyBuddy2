@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Flashcard from './flashcard';
 import AddFlashCard from './AddFlashCard';
 
