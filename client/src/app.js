@@ -11,4 +11,4 @@ import './styles/components/About.css';
 import './styles/components/Add.css';
 import './styles/components/questions.css';
 
-ReactDOM.render(<StudyBuddy />, document.getElementById('app'));
+ReactDOM.render(<StudyBuddy />, document.getElementById('app')); 
