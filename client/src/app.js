@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter , Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import SetPage from "./pages/SetPage";
