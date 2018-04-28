@@ -1,26 +1,25 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from "react";
+import {Link} from "react-router-dom";
+import "./UserLogin.css";
 
 class UserLogin extends React.Component{
 
   state = {
     signup: false,
     login: true,
-    userFirstName: '',
-    userLastName: '',
-    userEmail:'',
-    password:'',
-    confirmPassword:''
+    userFirstName: "",
+    userLastName: "",
+    userEmail: "",
+    password: "",
+    confirmPassword: ""
   };
 
-  componentDidMount(){
-    localStorage.setItem('user', '');
-    localStorage.setItem('id', 0);
+  componentDidMount() {
+    localStorage.setItem("user", "");
+    localStorage.setItem("id", 0);
   }
 
- 
-
-  renderSwitch = (word) => {
+  renderSwitch = word => {
     var signup, login;
 
     if (word === "login") {
@@ -35,7 +34,6 @@ class UserLogin extends React.Component{
   }
 
   render() {
-    var self = this;
     return (
       <div className="row">
         <div className="col-0 col-sm-0 col-md-2 col-lg-2 col-xl-4"></div>
@@ -44,12 +42,12 @@ class UserLogin extends React.Component{
             <div className="gradient" id="loginbox">
               <div className="row">
                 <div id="buttons">
-                  <button id="loginButton" onClick={self.renderSwitch.bind(null,"login")} className={self.state.login ? "main" : "sideline"}>login</button>
-                  <button id="signupButton" onClick={self.renderSwitch.bind(null,"signup")} className={self.state.signup ? "main" : "sideline"}>sign up</button>
+                  <button id="loginButton" onClick={this.renderSwitch("login")} className={this.state.login ? "main" : "sideline"}>login</button>
+                  <button id="signupButton" onClick={this.renderSwitch("signup")} className={this.state.signup ? "main" : "sideline"}>sign up</button>
                 </div>
               </div>
-              {self.state.signup ? <Signup/> : null}
-              {self.state.login ? <Login /> : null}
+              {this.state.signup ? <Signup/> : null}
+              {this.state.login ? <Login /> : null}
             </div>
           </div>
 
@@ -60,13 +58,14 @@ class UserLogin extends React.Component{
 }
 
 class Signup extends React.Component {
-  handleChange = (e) => {
+  handleChange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSignUp = (e) =>{
+  handleSignUp = e =>{
     e.preventDefault();
+
     var data = {
       firstName: this.state.userFirstName,
       lastName: this.state.userLastName,
@@ -74,22 +73,29 @@ class Signup extends React.Component {
       password:this.state.password,
       confirmPassword: this.state.confirmPassword
     }
+
     console.log(data);
+    
     fetch("/api/users", {
-      method: 'POST',
-      headers: {'Accept': 'application/json',
-      'Content-Type': 'application/json'},
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data)
-  }).then(function(response) {
-    console.log(response);
+    }).then(function(response) {
+      console.log(response);
+
       if (response.status >= 400) {
         throw new Error("Bad response from server");
       }
+
       return response.json();
-  }).catch(function(err) {
-      console.log(err)
-  });
+    }).catch(function(err) {
+        console.log(err)
+    });
   }
+
   render() {
     return (
       <div className="row text-center">     
@@ -107,50 +113,47 @@ class Signup extends React.Component {
 }
   
 class Login extends React.Component {
- state={
-   email: '',
-   password: ''
- }
+  state = {
+    email: "",
+    password: ""
+  }
 
- handleChange = (e) => {
-  e.preventDefault();
-  this.setState({ [e.target.name]: e.target.value });
-}
+  handleChange = e => {
+    e.preventDefault();
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
- handleLogin = (e) => {
-  // e.preventDefault();
-  var data = {
-    email: this.state.email,
-    password:this.state.password
-  };
+  handleLogin = e => {
+    // e.preventDefault();
+    var data = {
+      email: this.state.email,
+      password:this.state.password
+    };
 
-  fetch("/api/users/login", {
-    method: 'POST',
-    headers: {'Accept': 'application/json',
-    'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
-
-}).then(function(response) {
-
-  console.log("response: " , response)
-    if (response.status >= 400) {
-      throw new Error("Bad response from server");
-    }
-    var data = JSON.stringify(response);
-    console.log(data);
-    return response.json();
-
-}).then(function(data){
-
-
-  localStorage.setItem('id', data.id);
-  localStorage.setItem('user', data.firstName);
-
-
-}).catch(function(err) {
-    console.log(err)
-});
-}
+    fetch("/api/users/login", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(function(response) {
+      console.log("response: " , response)
+      
+      if (response.status >= 400) {
+        throw new Error("Bad response from server");
+      }
+      
+      var data = JSON.stringify(response);
+      console.log(data);
+      return response.json();
+    }).then(function(data){
+      localStorage.setItem("id", data.id);
+      localStorage.setItem("user", data.firstName);
+    }).catch(function(err) {
+        console.log(err)
+    });
+  }
 
   render() {
     return (
@@ -158,7 +161,7 @@ class Login extends React.Component {
         <div id="login">
           <input type="email" id="email" placeholder="email" name="email" onChange={this.handleChange}/>
           <input type="password" id="password" placeholder="password" name="password" onChange={this.handleChange}/>
-         <Link to='/dashboard'><button id="login-send" className="send" onClick={this.handleLogin}>log me in!</button></Link>
+         <Link to="/dashboard"><button id="login-send" className="send" onClick={this.handleLogin}>log me in!</button></Link>
       </div> 
     </div>
     );

@@ -1,7 +1,8 @@
-import React from 'react';
-import Navbar from './Navbar';
+import React from "react";
+import Navbar from "../components/Navbar";
 
 export default class QuestionPage extends React.Component {
+    
     state = {
         title: "Vocabulary",
         user: "Amanda Ramirez",
@@ -14,7 +15,7 @@ export default class QuestionPage extends React.Component {
     render() {
         return (
             <div className="fitpage">
-	            <Navbar firstName = {localStorage.getItem('user')}/>
+	            <Navbar firstName = {localStorage.getItem("user")}/>
 
                 <div className="row info">
                     <button className="white-button mini-title">{this.state.title}</button>
