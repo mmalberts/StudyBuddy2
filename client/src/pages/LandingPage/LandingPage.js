@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../components/Header";
-import UserLogin from "../components/UserLogin";
+import Header from "../../components/Header";
+import UserLogin from "../../components/UserLogin";
 
 export default class LandingPage extends React.Component {
 
