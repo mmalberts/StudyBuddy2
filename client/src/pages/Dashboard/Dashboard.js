@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Flashcards from '../../components/Flashcards';
 import {connect} from "react-redux";
 
+
 const mapStateToProps = state => {
     console.log(state);
     return {user: state[0]};
@@ -30,15 +31,11 @@ class ConnectedDashboard extends React.Component{
             id:this.props.user.id
         })
 
+        let self = this;
         var data = {
-            user_id:this.props.user.id
+            user_id: this.props.user.id
         }
 
-        // this.setState({
-        //     firstName: localStorage.getItem('user'),
-        //     id: localStorage.getItem('id')
-        // })
-        let self = this;
         fetch('/api/units', {
             headers : { 
                 'Content-Type': 'application/json',
@@ -65,7 +62,7 @@ class ConnectedDashboard extends React.Component{
         }).catch(err => {
             console.log('caught it!', err);
         })
-       } 
+  } 
     
 
 
