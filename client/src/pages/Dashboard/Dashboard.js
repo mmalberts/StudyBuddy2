@@ -1,11 +1,17 @@
 import React from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import Flashcards from '../../components/Flashcards';
+import {connect} from "react-redux";
 
-export default class Dashboard extends React.Component{
+const mapStateToProps = state => {
+    console.log(state);
+    return {user: state[0]};
+}
+
+class ConnectedDashboard extends React.Component{
     state = {
-        firstName: localStorage.getItem('user'),
-        id: localStorage.getItem('id'),
+        firstName: '',
+        id: '',
         flashcards: []
     }
 
@@ -19,10 +25,14 @@ export default class Dashboard extends React.Component{
 
     componentDidMount() {
 
-        setTimeout(() => {
+        this.setState({
+            firstName: this.props.user.firstName,
+            id:this.props.user.id
+        })
+
         var data = {
-            user_id:localStorage.getItem('id')
-        };
+            user_id:this.props.user.id
+        }
 
         // this.setState({
         //     firstName: localStorage.getItem('user'),
@@ -55,15 +65,15 @@ export default class Dashboard extends React.Component{
         }).catch(err => {
             console.log('caught it!', err);
         })
-       }, 100) 
-    }
+       } 
+    
 
 
     
     render() {
         return (
             <div>
-	            <Navbar firstName={localStorage.getItem('user')}/>
+	            <Navbar firstName={this.state.firstName}/>
 
 	            <div className="container">
 		            <Flashcards 
@@ -75,3 +85,8 @@ export default class Dashboard extends React.Component{
         );
     }
 };
+
+const Dashboard = connect(mapStateToProps)(ConnectedDashboard);  
+
+export default Dashboard;
+

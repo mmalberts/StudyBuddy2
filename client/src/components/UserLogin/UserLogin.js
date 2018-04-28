@@ -1,5 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
+//import {connect} from "react-redux";
+//import { Redirect } from 'react-router';
+import Login from './Login'
 import "./UserLogin.css";
 
 class UserLogin extends React.Component{
@@ -14,10 +17,7 @@ class UserLogin extends React.Component{
     confirmPassword: ""
   };
 
-  componentDidMount() {
-    localStorage.setItem("user", "");
-    localStorage.setItem("id", 0);
-  }
+
 
   renderSwitch = word => {
     var signup, login;
@@ -112,60 +112,60 @@ class Signup extends React.Component {
   }
 }
   
-class Login extends React.Component {
-  state = {
-    email: "",
-    password: ""
-  }
+// class Login extends React.Component {
+//   state = {
+//     email: "",
+//     password: ""
+//   }
 
-  handleChange = e => {
-    e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value });
-  }
+//   handleChange = e => {
+//     e.preventDefault();
+//     this.setState({ [e.target.name]: e.target.value });
+//   }
 
-  handleLogin = e => {
-    // e.preventDefault();
-    var data = {
-      email: this.state.email,
-      password:this.state.password
-    };
+//   handleLogin = e => {
+//     // e.preventDefault();
+//     var data = {
+//       email: this.state.email,
+//       password:this.state.password
+//     };
 
-    fetch("/api/users/login", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(function(response) {
-      console.log("response: " , response)
+//     fetch("/api/users/login", {
+//       method: "POST",
+//       headers: {
+//         "Accept": "application/json",
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(data)
+//     }).then(function(response) {
+//       console.log("response: " , response)
       
-      if (response.status >= 400) {
-        throw new Error("Bad response from server");
-      }
+//       if (response.status >= 400) {
+//         throw new Error("Bad response from server");
+//       }
       
-      var data = JSON.stringify(response);
-      console.log(data);
-      return response.json();
-    }).then(function(data){
-      localStorage.setItem("id", data.id);
-      localStorage.setItem("user", data.firstName);
-    }).catch(function(err) {
-        console.log(err)
-    });
-  }
+//       var data = JSON.stringify(response);
+//       console.log(data);
+//       return response.json();
+//     }).then(function(data){
+//       localStorage.setItem("id", data.id);
+//       localStorage.setItem("user", data.firstName);
+//     }).catch(function(err) {
+//         console.log(err)
+//     });
+//   }
 
-  render() {
-    return (
-      <div className="row text-center">           
-        <div id="login">
-          <input type="email" id="email" placeholder="email" name="email" onChange={this.handleChange}/>
-          <input type="password" id="password" placeholder="password" name="password" onChange={this.handleChange}/>
-         <Link to="/dashboard"><button id="login-send" className="send" onClick={this.handleLogin}>log me in!</button></Link>
-      </div> 
-    </div>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <div className="row text-center">           
+//         <div id="login">
+//           <input type="email" id="email" placeholder="email" name="email" onChange={this.handleChange}/>
+//           <input type="password" id="password" placeholder="password" name="password" onChange={this.handleChange}/>
+//          <Link to="/dashboard"><button id="login-send" className="send" onClick={this.handleLogin}>log me in!</button></Link>
+//       </div> 
+//     </div>
+//     );
+//   }
+// }
 
 export default UserLogin;
