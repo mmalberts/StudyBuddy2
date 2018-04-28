@@ -1,11 +1,11 @@
 import React from "react";
 import {BrowserRouter , Route, Switch} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 import SetPage from "./pages/SetPage";
 import QuestionPage from "./pages/QuestionPage";
 import Add from "./pages/Add";
-import Doesnotexist from "./pages/Doesnotexist";
+import Doesnotexist from "./pages/DoesNotExist";
 
 const App = () => (
   <BrowserRouter>
