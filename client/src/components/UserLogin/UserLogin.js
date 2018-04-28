@@ -63,7 +63,7 @@ class Signup extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSignUp = e =>{
+  handleSignUp = e => {
     e.preventDefault();
 
     var data = {
