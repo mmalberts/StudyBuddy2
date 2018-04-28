@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import About from "../components/About";
+import Navbar from "../../components/Navbar";
+import About from "../About";
 
 export default class SetPage extends React.Component{
 
