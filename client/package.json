@@ -2,9 +2,9 @@
   "name": "StudyBuddy",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000/",
+  "proxy": "http://localhost:8080/",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "classnames": "^2.2.5",
     "mysql2": "^1.5.3",
