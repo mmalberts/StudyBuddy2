@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import "./questions.css";
 
 export default class QuestionPage extends React.Component {
     

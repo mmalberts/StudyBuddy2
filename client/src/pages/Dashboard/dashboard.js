@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Flashcards from './flashcards';
+import Navbar from '../../components/Navbar/Navbar';
+import Flashcards from '../../components/Flashcards';
 
 export default class Dashboard extends React.Component{
     state = {
