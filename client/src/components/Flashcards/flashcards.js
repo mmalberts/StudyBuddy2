@@ -1,6 +1,7 @@
 import React from 'react';
 import Flashcard from '../../components/Flashcard';
 import AddFlashCard from '../AddFlashCard';
+import "./flashcards.css";
 
 const Flashcards = (props) => {
 
