@@ -42,8 +42,8 @@ class UserLogin extends React.Component{
             <div className="gradient" id="loginbox">
               <div className="row">
                 <div id="buttons">
-                  <button id="loginButton" onClick={this.renderSwitch("login")} className={this.state.login ? "main" : "sideline"}>login</button>
-                  <button id="signupButton" onClick={this.renderSwitch("signup")} className={this.state.signup ? "main" : "sideline"}>sign up</button>
+                  <button id="loginButton" onClick={() => this.renderSwitch("login")} className={this.state.login ? "main" : "sideline"}>login</button>
+                  <button id="signupButton" onClick={() => this.renderSwitch("signup")} className={this.state.signup ? "main" : "sideline"}>sign up</button>
                 </div>
               </div>
               {this.state.signup ? <Signup/> : null}
