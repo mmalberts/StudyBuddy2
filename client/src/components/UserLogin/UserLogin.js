@@ -96,13 +96,9 @@ class Signup extends React.Component {
 
     console.log(data);
     this.setState(() => ({
-<<<<<<< HEAD
+
       confirmSignup: true
     }));
-=======
-          confirmSignup: true
-        }));
->>>>>>> 5814e90... styled modal
 
     fetch("/api/users", {
       method: "POST",
@@ -121,11 +117,6 @@ class Signup extends React.Component {
           }));
           throw new Error("Bad response from server");
         }
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 5814e90... styled modal
         return response.json();
       })
       .catch(function(err) {
