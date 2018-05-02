@@ -96,8 +96,13 @@ class Signup extends React.Component {
 
     console.log(data);
     this.setState(() => ({
+<<<<<<< HEAD
       confirmSignup: true
     }));
+=======
+          confirmSignup: true
+        }));
+>>>>>>> c1873eb343fa2f72b8458a2b3c336acbb8d18aeb
 
     fetch("/api/users", {
       method: "POST",
@@ -116,7 +121,11 @@ class Signup extends React.Component {
           }));
           throw new Error("Bad response from server");
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c1873eb343fa2f72b8458a2b3c336acbb8d18aeb
         return response.json();
       })
       .catch(function(err) {
