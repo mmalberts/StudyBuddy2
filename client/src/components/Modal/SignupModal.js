@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import Modal from "react-modal";
 import "./SignupModal.css";
 
@@ -8,16 +9,17 @@ const SignupModal = props => {
       isOpen={props.confirmSignup}
       contentLabel="Confirm Signup"
       onRequestClose={props.handleClearModal}
+      className="modalpanel"
     >
       {props.confirmSignup ? (
-        <div>
-          <h1>"Thank you for signing up!"</h1>
-          <button onClick={props.handleClearModal}>Awesome!</button>
+        <div className="modalbox">
+          <h1>Thank you for signing up!</h1>
+          <Link to="/"><button onClick={props.handleClearModal} className="gradient-button modalbutton">get started!</button></Link>
         </div>
       ) : (
-        <div>
-          <h1>"Sorry, user aleady exists."</h1>
-          <button onClick={props.handleClearModal}>Oh no!</button>
+        <div className="modalbox">
+          <h1>Sorry, user aleady exists!</h1>
+          <button onClick={props.handleClearModal} className="gradient-button modalbutton">Oh no!</button>
         </div>
       )}
     </Modal>
