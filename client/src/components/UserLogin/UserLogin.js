@@ -96,8 +96,8 @@ class Signup extends React.Component {
 
     console.log(data);
     this.setState(() => ({
-      confirmSignup: true
-    }));
+          confirmSignup: true
+        }));
 
     fetch("/api/users", {
       method: "POST",
@@ -116,7 +116,7 @@ class Signup extends React.Component {
           }));
           throw new Error("Bad response from server");
         }
-
+        
         return response.json();
       })
       .catch(function(err) {
