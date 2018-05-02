@@ -57,13 +57,16 @@ class ConnectedLogin extends React.Component {
   //var id = data.id;
   // localStorage.setItem('id', data.id);
   // localStorage.setItem('user', data.firstName);
+  if(data.firstName !== undefined){
+    this.props.addUser({firstName: data.firstName, id: data.id});
+    this.setState({
+       signedIn: true
+    });
+  }
+  else{
+    alert('Wrong log-in information! Please try again!');
+  }
 
-  this.props.addUser({firstName: data.firstName, id: data.id});
-  this.setState({
-    firstName: data.firstName,
-    id: data.id,
-    signedIn: true
-  });
 
   //this.addUser();
   
