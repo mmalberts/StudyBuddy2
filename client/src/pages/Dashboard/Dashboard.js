@@ -78,6 +78,66 @@ class ConnectedDashboard extends React.Component {
   }
 }
 
+
 const Dashboard = connect(mapStateToProps)(ConnectedDashboard);
+        fetch('/api/units', {
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }, 
+            method: 'POST',
+            body:JSON.stringify(data)
+
+           
+        }).then(function(response) {
+            if (response.status >= 400) {
+                throw new Error("Bad response from server");
+            }
+            console.log(response);
+            var data = JSON.stringify(response);
+            console.log(data);
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+            self.setState({
+                flashcards: data
+            })
+
+        }).catch(err => {
+            console.log('caught it!', err);
+        })
+    } 
+
+    filterOnClick = event => {
+        let filterValue = event.target.id;
+        console.log(filterValue);
+    }
+    
+    render() {
+        return (
+            <div>
+	            <Navbar firstName={this.state.firstName}/>
+
+	            <div className="container">
+                    <div className="row filterholder">
+                        <h2 className="subheading">filters</h2>
+                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div className="row filterlist">
+                                <button className="filter standard white-button" id="math" onClick={this.filterOnClick}>math</button>
+                                <button className="filter standard white-button" id="science" onClick={this.filterOnClick}>science</button>
+                                <button className="filter standard white-button" id="english" onClick={this.filterOnClick}>english</button>
+                            </div>
+                        </div>
+                    </div>
+
+		            <Flashcards 
+                     flashcards = {this.state.flashcards} 
+                     handleDeleteButton = {this.handleDeleteButton}
+		            />
+		        </div>
+            </div>
+        );
+    }
+};
 
 export default Dashboard;
