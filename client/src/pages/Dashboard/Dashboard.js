@@ -62,10 +62,12 @@ class ConnectedDashboard extends React.Component{
         }).catch(err => {
             console.log('caught it!', err);
         })
-  } 
-    
+    } 
 
-
+    filterOnClick = event => {
+        let filterValue = event.target.id;
+        console.log(filterValue);
+    }
     
     render() {
         return (
@@ -73,6 +75,17 @@ class ConnectedDashboard extends React.Component{
 	            <Navbar firstName={this.state.firstName}/>
 
 	            <div className="container">
+                    <div className="row filterholder">
+                        <h2 className="subheading">filters</h2>
+                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div className="row filterlist">
+                                <button className="filter standard white-button" id="math" onClick={this.filterOnClick}>math</button>
+                                <button className="filter standard white-button" id="science" onClick={this.filterOnClick}>science</button>
+                                <button className="filter standard white-button" id="english" onClick={this.filterOnClick}>english</button>
+                            </div>
+                        </div>
+                    </div>
+
 		            <Flashcards 
                      flashcards = {this.state.flashcards} 
                      handleDeleteButton = {this.handleDeleteButton}
