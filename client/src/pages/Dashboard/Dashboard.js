@@ -35,6 +35,7 @@ class ConnectedDashboard extends React.Component {
         })
 
         let self = this;
+
         var data = {
           user_id: this.props.user.id
         };
@@ -47,7 +48,6 @@ class ConnectedDashboard extends React.Component {
             method: 'POST',
             body:JSON.stringify(data)
 
-           
         }).then(function(response) {
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
