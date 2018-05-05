@@ -1,7 +1,6 @@
 import React from 'react';
 import "./filters.css";
 import {connect} from "react-redux";
-import { Redirect } from 'react-router';
 import {addUser} from '../../actions/index';
 
 const mapDispatchToProps = dispatch => {
@@ -24,7 +23,7 @@ class ConnectedFilters extends React.Component {
         let filtered = [];
 
         for (var i = 0; i < this.state.flashcards.length; i++) {
-            if (this.state.flashcards[i].subject === filterValue) {
+            if (this.state.flashcards[i].subjectName === filterValue) {
                 filtered.push(this.state.flashcards[i]);
             }
         }
