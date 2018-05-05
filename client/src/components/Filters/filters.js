@@ -1,7 +1,6 @@
 import React from 'react';
 import "./filters.css";
 import {connect} from "react-redux";
-import { Redirect } from 'react-router';
 import {addUser} from '../../actions/index';
 
 const mapDispatchToProps = dispatch => {
