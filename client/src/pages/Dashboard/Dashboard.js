@@ -1,6 +1,7 @@
-import React from 'react';
-import Navbar from '../../components/Navbar/Navbar';
-import Flashcards from '../../components/Flashcards';
+import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import Flashcards from "../../components/Flashcards";
+import "./dashboard.css";
 import {connect} from "react-redux";
 
 
@@ -9,11 +10,12 @@ const mapStateToProps = state => {
     return {user: state[0]};
 }
 
-class ConnectedDashboard extends React.Component{
+class ConnectedDashboard extends React.Component {
     state = {
         firstName: '',
         id: '',
-        flashcards: []
+        flashcards: [],
+        filteredFlashcards: []
     }
 
     handleDeleteButton = (flashcardToRemove) => {
@@ -56,9 +58,9 @@ class ConnectedDashboard extends React.Component{
         }).then(function(data) {
             console.log(data);
             self.setState({
-                flashcards: data
+                flashcards: data,
+                filteredFlashcards: data
             })
-
         }).catch(err => {
             console.log('caught it!', err);
         })
@@ -67,6 +69,16 @@ class ConnectedDashboard extends React.Component{
     filterOnClick = event => {
         let filterValue = event.target.id;
         console.log(filterValue);
+
+        let filtered = [];
+
+        for (var i = 0; i < this.state.flashcards.length; i++) {
+            if (this.state.flashcards[i].subject === filterValue) {
+                filtered.push(this.state.flashcards[i]);
+            }
+        }
+
+        this.setState({ filteredFlashcards: filtered });
     }
     
     render() {
@@ -79,6 +91,7 @@ class ConnectedDashboard extends React.Component{
                         <h2 className="subheading">filters</h2>
                         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div className="row filterlist">
+                                <button className="filter standard white-button" id="all" onClick={this.filterOnClick}>all</button>
                                 <button className="filter standard white-button" id="math" onClick={this.filterOnClick}>math</button>
                                 <button className="filter standard white-button" id="science" onClick={this.filterOnClick}>science</button>
                                 <button className="filter standard white-button" id="english" onClick={this.filterOnClick}>english</button>
@@ -99,4 +112,3 @@ class ConnectedDashboard extends React.Component{
 const Dashboard = connect(mapStateToProps)(ConnectedDashboard);  
 
 export default Dashboard;
-
