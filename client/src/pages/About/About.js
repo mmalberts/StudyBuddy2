@@ -19,10 +19,10 @@ class About extends React.Component {
             <h3 className="byline">by {this.state.user}</h3>
           </div>
 
-          <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
             <div className="description">
               {this.state.description}
-              <Link to={this.state.link}><button className="gradient-button continue">continue</button></Link>
+              <Link to={this.state.link}><button className="gradient-button split">continue studying</button></Link><Link to={"/"}><button className="gradient-button split">edit flashcards</button></Link>
             </div>
           </div>
         </div>
