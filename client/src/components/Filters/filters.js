@@ -1,7 +1,21 @@
 import React from 'react';
 import "./filters.css";
+import {connect} from "react-redux";
+import { Redirect } from 'react-router';
+import {addUser} from '../../actions/index';
 
-class Filters extends React.Component {
+const mapDispatchToProps = dispatch => {
+    return {
+        addUser: user => dispatch(addUser(user))
+    };
+};
+
+const mapStateToProps = state => {
+    console.log(state);
+    return {user: state[0]};
+};
+
+class ConnectedFilters extends React.Component {
 
 	filterOnClick = event => {
         let filterValue = event.target.id;
@@ -15,7 +29,11 @@ class Filters extends React.Component {
             }
         }
 
-        this.setState({ filteredFlashcards: filtered });
+        this.props.addUser({ 
+        	firstName: this.props.user.firstName, 
+        	id: this.props.user.id,
+        	filteredFlashcards: filtered 
+        });
     }
  
  	render() {
@@ -34,5 +52,7 @@ class Filters extends React.Component {
 	    )
 	}
 }
+
+const Filters = connect(mapStateToProps, mapDispatchToProps)(ConnectedFilters);
 
 export default Filters;
