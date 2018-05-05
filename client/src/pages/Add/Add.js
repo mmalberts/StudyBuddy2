@@ -44,7 +44,7 @@ class ConnectedQuestionPage extends React.Component {
     saveTopic = (e) =>{
       e.preventDefault();
       var data = {
-        //subjectName: this.state.subjectName,
+        subjectName: this.state.subjectName,
         unitName:this.state.unitName,
         description: this.state.description,
         UserId: this.state.UserId,
@@ -77,7 +77,7 @@ class ConnectedQuestionPage extends React.Component {
 	            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 	                      <h2 className="formh2">basic information</h2>
 
-	                      <select className="form-control" name="unitName" id="subject" onChange={this.handleChange}>
+	                      <select className="form-control" name="subjectName" id="subject" onChange={this.handleChange}>
 	                      	<option selected="selected">select a subject</option>
 	                        <option value="JavaScript">JavaScript</option>
 	                        <option value="Math">Math</option> 
@@ -85,7 +85,7 @@ class ConnectedQuestionPage extends React.Component {
 	                        <option value="Python">Python</option>
 	                        <option value="Biology">Biology</option>
 	                      </select>
-                          <input className="form-input" type="text" id="name" name="name" onChange={this.handleChange} placeholder="name"/>
+                          <input className="form-input" type="text" id="name" name="unitName" onChange={this.handleChange} placeholder="name"/>
 	                      <input className="form-input larger" type="text" id="description" name="description" onChange={this.handleChange} placeholder="description"/>
 	                      <input className="form-input" type="text" id="setbg" name="bg" onChange={this.handleChange} placeholder="background image url"/>
 	                      <button id="saveDeck" className="white-button" onClick={this.saveTopic}>Create Deck</button>
