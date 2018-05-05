@@ -10,6 +10,7 @@ const SignupModal = props => {
       contentLabel="Confirm Signup"
       onRequestClose={props.handleClearModal}
       className="modalpanel"
+      ariaHideApp={false}
     >
       {props.confirmSignup ? (
         <div className="modalbox">
