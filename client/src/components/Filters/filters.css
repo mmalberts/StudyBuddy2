@@ -8,6 +8,7 @@ div.filterlist {
 
 button.filter {
    margin-right: 10px;
+   margin-bottom: 5px;
    padding: 5px 20px !important;
    border-radius: 20px;
    border: 2px solid white;

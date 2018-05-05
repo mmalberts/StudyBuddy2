@@ -23,7 +23,7 @@ class ConnectedFilters extends React.Component {
         let filtered = [];
 
         for (var i = 0; i < this.state.flashcards.length; i++) {
-            if (this.state.flashcards[i].subject === filterValue) {
+            if (this.state.flashcards[i].subjectName === filterValue) {
                 filtered.push(this.state.flashcards[i]);
             }
         }
