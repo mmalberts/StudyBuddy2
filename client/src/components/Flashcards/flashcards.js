@@ -18,6 +18,7 @@ const Flashcards = (props) => {
                 <AddFlashCard 
                     /*handleAddFlashcard = {this.handleAddFlashcard}*/
                     />
+
                 {props.flashcards.map((card) => (
                     <Flashcard 
                     key = {card.unitName}

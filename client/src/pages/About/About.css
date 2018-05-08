@@ -6,8 +6,8 @@ div.about {
 
 button.set-title {
     display: inline-block;
-    padding: 7px 40px;
-    font-size: 40px;
+    padding: 7px 40px !important;
+    font-size: 40px !important;
     font-weight: bold;
     border-radius: 50px;
     text-transform: lowercase;
@@ -27,14 +27,21 @@ div.description {
     border-radius: 10px;
 }
 
-button.continue {
-    display: block;
+button.split {
+    display: inline-block;
     width: 100%;
     margin-top: 15px;
     padding: 5px 20px;
-    font-size: 20px;
+    font-size: 20px !important;
     font-weight: bold;
     border-radius: 50px;
     text-transform: lowercase;
     text-align: right;
+    border: 2px solid transparent;
+}
+
+button.split:hover {
+    background: white;
+    color: #78c9b1;
+    border: 2px solid #78c9b1;
 }

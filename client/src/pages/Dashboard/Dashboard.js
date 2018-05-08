@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import Filters from "../../components/Filters";
 import Flashcards from "../../components/Flashcards";
+import "./dashboard.css";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
@@ -12,7 +14,8 @@ class ConnectedDashboard extends React.Component {
   state = {
     firstName: "",
     id: "",
-    flashcards: []
+    flashcards: [],
+    filteredFlashcards: []
   };
 
   handleDeleteButton = flashcardToRemove => {
@@ -31,6 +34,7 @@ class ConnectedDashboard extends React.Component {
     });
 
     let self = this;
+
     var data = {
       user_id: this.props.user.id
     };
@@ -55,7 +59,8 @@ class ConnectedDashboard extends React.Component {
       .then(function(data) {
         console.log(data);
         self.setState({
-          flashcards: data
+          flashcards: data,
+          filteredFlashcards: data
         });
       })
       .catch(err => {
@@ -67,7 +72,10 @@ class ConnectedDashboard extends React.Component {
     return (
       <div>
         <Navbar firstName={this.state.firstName} />
+
         <div className="container">
+          <Filters />
+
           <Flashcards
             flashcards={this.state.flashcards}
             handleDeleteButton={this.handleDeleteButton}
