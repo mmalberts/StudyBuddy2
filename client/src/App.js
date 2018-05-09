@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import SetPage from "./pages/SetPage";
 import QuestionPage from "./pages/QuestionPage";
 import Add from "./pages/Add";
-import Doesnotexist from "./pages/DoesNotExist";
+import DoesNotExist from "./pages/DoesNotExist";
 
 const App = () => (
   <BrowserRouter>
@@ -15,7 +15,7 @@ const App = () => (
       <Route path="/setpage" component={SetPage} /> 
       <Route path="/questionpage" component={QuestionPage} />
       <Route path="/add" component={Add} /> 
-      <Route component={Doesnotexist} />    
+      <Route component={DoesNotExist} />    
    </Switch>
   </BrowserRouter>
 );

@@ -46,3 +46,34 @@ button.oversized {
     font-size: 30px;
     border-radius: 50px !important;
 }
+
+h2.formh2 {
+    margin-top: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+}
+
+h3.qh3 {
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: left;
+    color: #ffffff;
+}
+
+input.form-input {
+    width: 100%;
+    margin: 7px auto;
+}
+
+input.larger {
+    height: 200px;
+}
+
+button.oversized {
+    margin-top: 25px;
+    padding: 10px 30px;
+    font-size: 30px;
+    border-radius: 50px !important;
+}
