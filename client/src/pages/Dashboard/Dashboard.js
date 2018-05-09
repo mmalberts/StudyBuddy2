@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import Filters from "../../components/Filters";
 import Flashcards from "../../components/Flashcards";
 import "./dashboard.css";
 import {connect} from "react-redux";
