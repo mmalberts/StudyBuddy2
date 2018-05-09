@@ -27,12 +27,12 @@ class ConnectedDashboard extends React.Component {
     }
 
     handleDeleteButton = (event) => {
-        console.log("delete button clicked: " + event.target.id);
+        // console.log("delete button clicked: " + event.target.id);
         var queryURL = '/api/units/' + event.target.id;
         console.log(queryURL);
         fetch(queryURL, {
             method: "delete"
-        }).then(console.log("deleted"));
+        }).then(response => response.json);
     }
 
     filterOnClick = event => {
