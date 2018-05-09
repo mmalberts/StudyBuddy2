@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 import React from 'react';
 import Navbar from '../../components/Navbar/';
 import {addUser} from '../../actions/index';
 import {connect} from "react-redux";
+=======
+import React from "react";
+import Navbar from "../../components/Navbar/";
+import BasicInfo from "../../components/BasicInfo/BasicInfo";
+import Question from "../../components/Question/Question";
+import { addUser } from "../../actions/index";
+import { connect } from "react-redux";
+>>>>>>> 011ca7b... reload in login, fixes in questions page
 import "./form.css";
 
 
