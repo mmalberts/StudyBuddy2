@@ -21,7 +21,6 @@ class ConnectedDashboard extends React.Component {
 
     handleDeleteButton = (event) => {
         console.log("delete button clicked: " + event.target.id);
-
     }
 
     componentDidMount() {
