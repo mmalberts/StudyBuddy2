@@ -15,10 +15,8 @@ const Flashcard = (props) => {
         <button className="white-button card-title">{props.flashcardText}</button>
         <button 
          className="gradient-button delete" 
-         id="delete" 
-         onClick={(e) => {
-           props.handleDeleteButton(props.flashcardText)
-           }}
+         id={props.id} 
+         onClick={props.handleDeleteButton}
          >x</button>
       </div>
     </div></Link>
