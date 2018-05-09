@@ -18,6 +18,18 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post("/api/units/filter", function(req, res) {
+		var query = {};
+		query.UserId = req.body.user_id;
+		query.subjectName = req.body.subjectName;
+		db.Unit.findAll({
+			where: query,
+			include: [db.User]
+		}).then(function(units) {
+			res.json(units);
+		});
+	});
+
 	// get cards based on unit id number
 	app.get("/api/cards/:unitId", function(req, res) {
 		db.Card.findAll({
