@@ -68,26 +68,26 @@ class ConnectedDashboard extends React.Component {
         });
     }
 
-  componentDidMount() {
-    this.setState({
-      firstName: this.props.user.firstName,
-      id: this.props.user.id
-    });
+    componentDidMount() {
+        this.setState({
+            firstName: this.props.user.firstName,
+            id: this.props.user.id
+        });
 
-    let self = this;
+        let self = this;
 
-    var data = {
-      user_id: this.props.user.id
-    };
+        var data = {
+          user_id: this.props.user.id
+        };
 
-    fetch("/api/units", {
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify(data)      
-      }).then(response => {
+        fetch("/api/units", {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(data)      
+        }).then(response => {
             if (response.status >= 400) {
                 throw new Error("Bad response from server.");
             }
