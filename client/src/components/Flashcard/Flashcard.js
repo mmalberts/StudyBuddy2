@@ -17,6 +17,6 @@ const Flashcard = props => {
             </div>
         </Link>
     );
-}
+};
 
 export default Flashcard;

@@ -107,8 +107,8 @@ class ConnectedAddUnit extends React.Component {
                 </div>
             </div>
         );
-    }
-}
+    };
+};
 
 const AddUnit = connect(mapStateToProps, mapDispatchToProps)(ConnectedAddUnit);
 

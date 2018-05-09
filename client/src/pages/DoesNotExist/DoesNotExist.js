@@ -15,13 +15,13 @@ const mapDispatchToProps = dispatch => {
 class ConnectedDoesNotExist extends React.Component {
 	state = {
         firstName: "lost traveller",
-    }
+    };
 
     componentDidMount() {
         this.setState({
             firstName: this.props.user.firstName,
         });
-    }
+    };
 
     render() {
         return (
@@ -30,9 +30,9 @@ class ConnectedDoesNotExist extends React.Component {
 				<h1 className="error top">ERROR 404</h1>
 				<h2 className="error">Page does not exist!</h2>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 const DoesNotExist = connect(mapStateToProps, mapDispatchToProps)(ConnectedDoesNotExist);  
 

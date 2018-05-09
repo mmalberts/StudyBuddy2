@@ -14,7 +14,7 @@ class ConnectedUnit extends React.Component {
 	    description: "A simple vocab test to quiz your knowledge.",
 	    user: "Amanda Ramirez",
 	    link: "./questionpage"
-  	}
+  	};
 
     render() {
         return (
@@ -38,8 +38,8 @@ class ConnectedUnit extends React.Component {
 				    </div>
 				</div>
             </div>
-        )
-    }
+        );
+    };
 };
 
 const Unit = connect(mapStateToProps)(ConnectedUnit);
