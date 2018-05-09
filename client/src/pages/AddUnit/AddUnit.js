@@ -41,8 +41,8 @@ class ConnectedAddUnit extends React.Component {
         fetch("/api/units/create", {
             method: "POST",
             headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             body: JSON.stringify(data)
         }).then(response => {

@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Flashcard from "../../components/Flashcard";
-import "./Flashcards.css";
+import "./DisplayFlashcards.css";
 
-const Flashcards = props => {
+const DisplayFlashcards = props => {
     return (
         <div className="row">
             <h2 className="subheading dashboard">continue studying...</h2>
@@ -16,15 +16,15 @@ const Flashcards = props => {
                     </div>
                 </Link>
 
-                { props.flashcards.map((card) => (
+                { props.flashcards.map(card => (
                     <Flashcard 
-                    key = {card.unitName}
-                    id = {card.id}
-                    flashcardText = {card.unitName}
-                    flashcardD = {card.description}
-                    flashcardBg = {card.bg}
-                    handleDeleteButton = {props.handleDeleteButton}
-                    cardLink = "/unit"
+                        key = {card.unitName}
+                        id = {card.id}
+                        flashcardText = {card.unitName}
+                        flashcardD = {card.description}
+                        flashcardBg = {card.bg}
+                        handleDeleteButton = {props.handleDeleteButton}
+                        cardLink = "/unit"
                     />
                 ))};
             </div>
@@ -32,4 +32,4 @@ const Flashcards = props => {
     );
 };
 
-export default Flashcards;
+export default DisplayFlashcards;

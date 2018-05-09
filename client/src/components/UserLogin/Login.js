@@ -1,7 +1,7 @@
 import React from "react";
-import {addUser} from "../../actions/index";
-import {connect} from "react-redux";
-import {Redirect} from "react-router";
+import { addUser } from "../../actions/index";
+import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
 const mapDispatchToProps = dispatch => {
     return { addUser: user => dispatch(addUser(user)) };
@@ -49,7 +49,7 @@ class ConnectedLogin extends React.Component {
             } else {
                 alert("Wrong log-in information! Please try again!");
             }
-        }).catch(function(err) {
+        }).catch(err => {
             console.log("Error: " + err);
         });
     }

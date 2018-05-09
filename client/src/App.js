@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AddUnit from "./pages/AddUnit";
 import Dashboard from "./pages/Dashboard";
 import DoesNotExist from "./pages/DoesNotExist";
