@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./Login";
-import SignupModal from "../../components/Modal/SignupModal";
+import SignupModal from "../../components/SignupModal";
 import "./UserLogin.css";
 
 class UserLogin extends React.Component {
@@ -37,8 +37,8 @@ class UserLogin extends React.Component {
                     <div className="gradient" id="loginbox">
                         <div className="row">
                             <div id="buttons">
-                                <button id="loginButton" onClick={this.renderSwitch("login")} className={this.state.login ? "main" : "sideline"}>login</button>
-                                <button id="signupButton" onClick={this.renderSwitch("signup")} className={this.state.signup ? "main" : "sideline"}>sign up</button>
+                                <button id="loginButton" onClick={() => this.renderSwitch("login")} className={this.state.login ? "main" : "sideline"}>login</button>
+                                <button id="signupButton" onClick={() => this.renderSwitch("signup")} className={this.state.signup ? "main" : "sideline"}>sign up</button>
                             </div>
                         </div>
                         {this.state.signup ? <Signup /> : null}

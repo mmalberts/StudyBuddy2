@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Modal from "react-modal";
 import "./SignupModal.css";
 
@@ -12,7 +12,7 @@ const SignupModal = props => {
             className="modalpanel"
             ariaHideApp={false}
         >
-            {props.confirmSignup ? (
+            { props.confirmSignup ? (
                 <div className="modalbox">
                     <h1>Thank you for signing up!</h1>
                     <Link to="/"><button onClick={props.handleClearModal} className="gradient-button modalbutton">get started!</button></Link>
