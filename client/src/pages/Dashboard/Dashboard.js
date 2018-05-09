@@ -104,7 +104,7 @@ class ConnectedDashboard extends React.Component {
         this.setState({
             firstName: this.props.user.firstName,
             id: this.props.user.id
-        })
+        });
 
         let self = this;
 
