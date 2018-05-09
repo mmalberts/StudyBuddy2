@@ -97,17 +97,8 @@ class ConnectedDashboard extends React.Component {
 
         }).catch(err => {
             console.log('caught it!', err);
-        })
-
-
-  handleDeleteButton = flashcardToRemove => {
-    this.setState(prevState => ({
-      flashcards: prevState.flashcards.filter(
-        flashcard => flashcardToRemove !== flashcard
-      )
-    }));
-    console.log("delete button clicked");
-  };
+        });
+    }
 
   componentDidMount() {
     this.setState({
