@@ -8,16 +8,16 @@ import QuestionPage from "./pages/QuestionPage";
 import SetPage from "./pages/SetPage";
 
 const App = () => (
-  <BrowserRouter>
-   <Switch>
-      <Route path="/" component={LandingPage} exact={true} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/setpage" component={SetPage} /> 
-      <Route path="/questionpage" component={QuestionPage} />
-      <Route path="/add" component={AddUnit} /> 
-      <Route component={DoesNotExist} />    
-   </Switch>
-  </BrowserRouter>
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" component={LandingPage} exact={true} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/setpage" component={SetPage} /> 
+            <Route path="/questionpage" component={QuestionPage} />
+            <Route path="/add" component={AddUnit} /> 
+            <Route component={DoesNotExist} />    
+        </Switch>
+    </BrowserRouter>
 );
 
 export default App;
