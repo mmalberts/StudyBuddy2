@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 class ConnectedFilters extends React.Component {
     state = {
         filteredFlashcards: this.props.user.filteredFlashcards
-    }
+    };
 
 	filterOnClick = event => {
         let filterValue = event.target.id;
@@ -31,7 +31,7 @@ class ConnectedFilters extends React.Component {
         	id: this.props.user.id,
         	filteredFlashcards: filtered 
         });
-    }
+    };
  
  	render() {
 	    return (
@@ -46,9 +46,9 @@ class ConnectedFilters extends React.Component {
 		            </div>
 		        </div>
 		    </div>
-	    )
-	}
-}
+	    );
+	};
+};
 
 const Filters = connect(mapStateToProps, mapDispatchToProps)(ConnectedFilters);
 
