@@ -97,8 +97,6 @@ class ConnectedDashboard extends React.Component {
         }).catch(err => {
             console.log('caught it!', err);
         })
-
-
     }
 
     componentDidMount() {

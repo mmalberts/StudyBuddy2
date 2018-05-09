@@ -89,6 +89,8 @@ class ConnectedQuestionPage extends React.Component {
 	                      <select className="form-control" name="subjectName" id="subject" onChange={this.handleChange}>
 	                      	<option selected="selected">select a subject</option>
 	                        <option value="Computer Science">Computer Science</option>
+	                      	<option value="default">select a subject</option>
+	                        <option value="JavaScript">JavaScript</option>
 	                        <option value="Math">Math</option> 
 	                        <option value="English">English</option>
 	                        <option value="Science">Science</option>

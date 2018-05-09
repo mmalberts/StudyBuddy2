@@ -9,9 +9,7 @@ const Flashcards = (props) => {
         <div className="row">
             <h2 className="subheading dashboard">continue studying...</h2>
             <div className="flashcard-panel">
-                <AddFlashCard 
-                    /*handleAddFlashcard = {this.handleAddFlashcard}*/
-                    />
+                <AddFlashCard />
 
                 { props.flashcards.map((card) => (
                     <Flashcard 
