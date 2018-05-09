@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
 	var Card = sequelize.define("Card", {
 		problem: {
 			type: DataTypes.STRING,
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	Card.associate = function(models) {
+	Card.associate = models => {
 		Card.belongsTo(models.Unit, {
 			foreignKey: {
 				allowNull: false
