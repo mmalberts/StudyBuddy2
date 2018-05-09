@@ -26,10 +26,10 @@ const Flashcards = props => {
                     handleDeleteButton = {props.handleDeleteButton}
                     cardLink = "/unit"
                     />
-                ))}
+                ))};
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Flashcards;

@@ -19,7 +19,7 @@ class ConnectedDashboard extends React.Component {
         id: "",
         flashcards: [],
         filteredFlashcards: []
-    }
+    };
 
     handleDeleteButton = event => {
         var queryURL = "/api/units/" + event.target.id;
@@ -27,7 +27,7 @@ class ConnectedDashboard extends React.Component {
         fetch(queryURL, {
             method: "delete"
         }).then(response => response.json);
-    }
+    };
 
     filterOnClick = event => {
         var url, data; 
@@ -66,7 +66,7 @@ class ConnectedDashboard extends React.Component {
         }).catch(err => {
             console.log("Error: ", err);
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({
@@ -99,7 +99,7 @@ class ConnectedDashboard extends React.Component {
         }).catch(err => {
             console.log("Error: ", err);
         });
-    } 
+    }; 
     
     render() {
         return (
@@ -128,7 +128,7 @@ class ConnectedDashboard extends React.Component {
 		        </div>
             </div>
         );
-    }
+    };
 };
 
 const Dashboard = connect(mapStateToProps, mapDispatchToProps)(ConnectedDashboard);  
