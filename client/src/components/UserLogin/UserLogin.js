@@ -81,6 +81,7 @@ class Signup extends React.Component {
     this.setState(() => ({
       confirmSignup: undefined
     }));
+    window.location.reload();
   };
 
   handleSignUp = e => {
@@ -96,7 +97,6 @@ class Signup extends React.Component {
 
     console.log(data);
     this.setState(() => ({
-
       confirmSignup: true
     }));
 

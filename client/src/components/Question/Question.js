@@ -1,3 +1,4 @@
+//This component is used to display the questions which have been created using CreateQuestion.js
 import React from "react";
 
 export default class Question extends React.Component {

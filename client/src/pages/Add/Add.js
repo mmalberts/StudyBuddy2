@@ -1,7 +1,9 @@
-import React from 'react';
-import Navbar from '../../components/Navbar/';
-import {addUser} from '../../actions/index';
-import {connect} from "react-redux";
+import React from "react";
+import Navbar from "../../components/Navbar/";
+import BasicInfo from "../../components/BasicInfo/BasicInfo";
+import Question from "../../components/Question/Question";
+import { addUser } from "../../actions/index";
+import { connect } from "react-redux";
 import "./form.css";
 
 
@@ -19,8 +21,8 @@ const mapStateToProps = state => {
 class ConnectedQuestionPage extends React.Component {
 
     state = {
-   	    subjectName: "",
-   	    unitName: "",
+   	  subjectName: "",
+   	  unitName: "",
       description: "",
       bg: "",
       UserId: this.props.user.id
