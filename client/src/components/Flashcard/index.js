@@ -1,1 +1,1 @@
-export { default } from "./flashcard";
+export { default } from "./Flashcard";
