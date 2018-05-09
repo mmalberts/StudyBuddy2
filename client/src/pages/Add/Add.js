@@ -82,7 +82,6 @@ class ConnectedQuestionPage extends React.Component {
       </div>
     );
   }
-
   render() {
     return (
       <div>
@@ -138,6 +137,7 @@ class ConnectedQuestionPage extends React.Component {
       </div>
     );
   }
+
 }
 
 const QuestionPage = connect(mapStateToProps, mapDispatchToProps)(

@@ -4,22 +4,14 @@ import AddFlashCard from '../AddFlashCard';
 import "./flashcards.css";
 
 const Flashcards = (props) => {
-
-    /*handleAddFlashcard = (flashcard) => {
-        this.setState((prevState) => ({
-            flashcards : prevState.flashcards.concat(flashcard)
-        }))
-    }*/
  
     return (
         <div className="row">
             <h2 className="subheading dashboard">continue studying...</h2>
             <div className="flashcard-panel">
-                <AddFlashCard 
-                    /*handleAddFlashcard = {this.handleAddFlashcard}*/
-                    />
+                <AddFlashCard />
 
-                {props.flashcards.map((card) => (
+                { props.flashcards.map((card) => (
                     <Flashcard 
                     key = {card.unitName}
                     id = {card.id}
