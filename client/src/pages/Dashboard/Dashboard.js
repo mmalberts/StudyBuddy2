@@ -1,67 +1,44 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Flashcards from "../../components/Flashcards";
-import "./dashboard.css";
+import {addUser} from "../../actions/index";
 import {connect} from "react-redux";
-import {addUser} from '../../actions/index';
-
+import Flashcards from "../../components/Flashcards";
+import Navbar from "../../components/Navbar";
+import "./dashboard.css";
 
 const mapStateToProps = state => {
-    console.log(state);
-    return {user: state[0]};
-}
+    return { user: state[0] };
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-        addUser: user => dispatch(addUser(user))
-    };
+    return { addUser: user => dispatch(addUser(user)) };
 };
 
 class ConnectedDashboard extends React.Component {
     state = {
-        firstName: '',
-        id: '',
+        firstName: "",
+        id: "",
         flashcards: [],
         filteredFlashcards: []
     }
 
-    handleDeleteButton = (event) => {
-        // console.log("delete button clicked: " + event.target.id);
-        var queryURL = '/api/units/' + event.target.id;
-        console.log(queryURL);
+    handleDeleteButton = event => {
+        var queryURL = "/api/units/" + event.target.id;
+
         fetch(queryURL, {
             method: "delete"
         }).then(response => response.json);
     }
 
     filterOnClick = event => {
-        // let filterValue = event.target.id;
-        // console.log(filterValue);
-
-        // let filtered = [];
-
-        // for (var i = 0; i < this.state.filteredFlashcards.length; i++) {
-        //     if (this.state.filteredFlashcards[i].subjectName === filterValue) {
-        //         filtered.push(this.state.flashcards[i]);
-        //     }
-        // }
-
-        // this.props.addUser({ 
-        //     firstName: this.props.user.firstName, 
-        //     id: this.props.user.id,
-        //     filteredFlashcards: filtered 
-        // });
         var url, data; 
-        console.log(event.target.id);
 
-        if(event.target.id === 'all'){
-            url = '/api/units'
+        if (event.target.id === "all") {
+            url = "/api/units"
             data = {
                 user_id: this.props.user.id
             };
-        }
-        else{
-            url = '/api/units/filter';
+        } else {
+            url = "/api/units/filter";
             data = {
                 user_id: this.props.user.id,
                 subjectName: event.target.id
@@ -69,37 +46,29 @@ class ConnectedDashboard extends React.Component {
         }
 
         let self = this;
+
         fetch(url, {
             headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             }, 
-            method: 'POST',
+            method: "POST",
             body:JSON.stringify(data)
-
-        }).then(function(response) {
+        }).then(response => {
             if (response.status >= 400) {
-                throw new Error("Bad response from server");
+                throw new Error("Bad response from server.");
             }
-            console.log(response);
-            var data = JSON.stringify(response);
-            console.log(data);
             return response.json();
-        }).then(function(data) {
-            console.log(data);
+        }).then(data => {
             self.setState({
-                //flashcards: data,
                 filteredFlashcards: data
-            })
-
-
+            });
         }).catch(err => {
-            console.log('caught it!', err);
-        })
+            console.log("Error: ", err);
+        });
     }
 
     componentDidMount() {
-
         this.setState({
             firstName: this.props.user.firstName,
             id: this.props.user.id
@@ -111,39 +80,25 @@ class ConnectedDashboard extends React.Component {
             user_id: this.props.user.id
         }
 
-        fetch('/api/units', {
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }, 
-            method: 'POST',
-            body:JSON.stringify(data)
-
-        }).then(function(response) {
+      fetch("/api/units", {
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(data)      
+        }).then(response => {
             if (response.status >= 400) {
-                throw new Error("Bad response from server");
+                throw new Error("Bad response from server.");
             }
-            console.log(response);
-            var data = JSON.stringify(response);
-            console.log(data);
             return response.json();
-        }).then(function(data) {
-            console.log(data);
+        }).then(data => {
             self.setState({
-                //flashcards: data,
                 filteredFlashcards: data
-            })
-
-
+            });
         }).catch(err => {
-            console.log('caught it!', err);
-        })
-
-        // this.props.addUser({
-        //     firstName: this.state.firstName, 
-        //     id: this.state.id, 
-        //     filteredFlashcards: this.state.filteredFlashcards
-        // });
+            console.log("Error: ", err);
+        });
     } 
     
     render() {
@@ -167,8 +122,8 @@ class ConnectedDashboard extends React.Component {
                     </div>
 
 		            <Flashcards 
-                     flashcards = {this.state.filteredFlashcards} 
-                     handleDeleteButton = {this.handleDeleteButton}
+                        flashcards = {this.state.filteredFlashcards} 
+                        handleDeleteButton = {this.handleDeleteButton}
 		            />
 		        </div>
             </div>
