@@ -77,7 +77,7 @@ module.exports = function(app) {
 	app.delete("/api/units/:unitId", function(req, res) {
 		db.Unit.destroy({
 			where: {
-				id: req.params.id
+				id: req.params.unitId
 			}
 		}).then(function(result) {
 			res.json(result);
