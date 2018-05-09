@@ -1,29 +1,23 @@
-import React from 'react';
-import "./filters.css";
+import React from "react";
+import {addUser} from "../../actions/index";
 import {connect} from "react-redux";
-import {addUser} from '../../actions/index';
+import "./Filters.css";
 
 const mapDispatchToProps = dispatch => {
-    return {
-        addUser: user => dispatch(addUser(user))
-    };
+    return { addUser: user => dispatch(addUser(user)) };
 };
 
 const mapStateToProps = state => {
-    console.log(state);
-    return {user: state[0]};
+    return { user: state[0] };
 };
 
 class ConnectedFilters extends React.Component {
-
     state = {
         filteredFlashcards: this.props.user.filteredFlashcards
     }
 
 	filterOnClick = event => {
         let filterValue = event.target.id;
-        console.log(filterValue);
-
         let filtered = [];
 
         for (var i = 0; i < this.state.filteredFlashcards.length; i++) {
