@@ -3,14 +3,14 @@ import Navbar from "../../components/Navbar/Navbar";
 import Filters from "../../components/Filters";
 import Flashcards from "../../components/Flashcards";
 import "./dashboard.css";
+
 import {connect} from "react-redux";
 import {addUser} from '../../actions/index';
 
-
 const mapStateToProps = state => {
-    console.log(state);
-    return {user: state[0]};
-}
+  console.log(state);
+  return { user: state[0] };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -19,6 +19,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ConnectedDashboard extends React.Component {
+
     state = {
         firstName: '',
         id: '',
@@ -98,30 +99,36 @@ class ConnectedDashboard extends React.Component {
             console.log('caught it!', err);
         })
 
-    }
 
-    componentDidMount() {
+  handleDeleteButton = flashcardToRemove => {
+    this.setState(prevState => ({
+      flashcards: prevState.flashcards.filter(
+        flashcard => flashcardToRemove !== flashcard
+      )
+    }));
+    console.log("delete button clicked");
+  };
 
-        this.setState({
-            firstName: this.props.user.firstName,
-            id: this.props.user.id
-        })
+  componentDidMount() {
+    this.setState({
+      firstName: this.props.user.firstName,
+      id: this.props.user.id
+    });
 
-        let self = this;
+    let self = this;
 
-        var data = {
-            user_id: this.props.user.id
-        }
+    var data = {
+      user_id: this.props.user.id
+    };
 
-        fetch('/api/units', {
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }, 
-            method: 'POST',
-            body:JSON.stringify(data)
-
-        }).then(function(response) {
+    fetch("/api/units", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(data)      
+      }).then(function(response) {
             if (response.status >= 400) {
                 throw new Error("Bad response from server");
             }
