@@ -19,7 +19,7 @@ const Flashcards = (props) => {
                     flashcardD = {card.description}
                     flashcardBg = {card.bg}
                     handleDeleteButton = {props.handleDeleteButton}
-                    cardLink = './setpage'
+                    cardLink = './Unit'
                     />
                 ))}
             </div>
