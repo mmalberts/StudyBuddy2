@@ -46,11 +46,11 @@ class ConnectedAddUnit extends React.Component {
             body: JSON.stringify(data)
         }).then(response => {
             if (response.status >= 400) {
-                throw new Error("Bad response from server");
+                throw new Error("Bad response from server.");
             }
             return response.json();
         }).catch(err => {
-            console.log(err);
+            console.log("Error: ", err);
         });
     };
 
@@ -110,8 +110,6 @@ class ConnectedAddUnit extends React.Component {
     }
 }
 
-const AddUnit = connect(mapStateToProps, mapDispatchToProps)( 
-    ConnectedAddUnit 
-);
+const AddUnit = connect(mapStateToProps, mapDispatchToProps)(ConnectedAddUnit);
 
 export default AddUnit;
