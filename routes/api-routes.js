@@ -56,4 +56,20 @@ module.exports = function(app) {
 			res.json(result);
 		});
 	});
+	
+	// ---------------
+	// DELETE REQUESTS
+	// ---------------
+
+	// delete units
+	app.delete("/api/units/:unitId", function(req, res) {
+		db.Unit.destroy({
+			where: {
+				id: req.params.id
+			}
+		}).then(function(result) {
+			res.json(result);
+		});
+	});
+
 }
