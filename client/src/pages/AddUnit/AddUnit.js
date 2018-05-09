@@ -2,8 +2,7 @@ import React from "react";
 import { addUser } from "../../actions/index";
 import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
-import Question from "../../components/Question/Question";
-import "./Add.css";
+import "./AddUnit.css";
 
 const mapDispatchToProps = dispatch => {
     return { addUser: user => dispatch(addUser(user)) };
@@ -13,7 +12,7 @@ const mapStateToProps = state => {
     return { user: state[0] };
 };
 
-class ConnectedQuestionPage extends React.Component {
+class ConnectedAddUnit extends React.Component {
     state = {
         subjectName: "",
         unitName: "",
@@ -69,7 +68,7 @@ class ConnectedQuestionPage extends React.Component {
                         id="subject"
                         onChange={this.handleChange}
                     >
-                        <option selected="selected">select a subject</option>
+                        <option value="default">select a subject</option>
                         <option value="JavaScript">JavaScript</option>
                         <option value="Math">Math</option>
                         <option value="English">English</option>
@@ -111,8 +110,8 @@ class ConnectedQuestionPage extends React.Component {
     }
 }
 
-const QuestionPage = connect(mapStateToProps, mapDispatchToProps)( 
-    ConnectedQuestionPage 
+const AddUnit = connect(mapStateToProps, mapDispatchToProps)( 
+    ConnectedAddUnit 
 );
 
-export default QuestionPage;
+export default AddUnit;
