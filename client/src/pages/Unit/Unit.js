@@ -8,7 +8,7 @@ const mapStateToProps = state => {
 	return { user: state[0] };
 } 
 
-class ConnectedSetPage extends React.Component {
+class ConnectedUnit extends React.Component {
 	state = {
 	    title: "Vocabulary",
 	    description: "A simple vocab test to quiz your knowledge.",
@@ -42,6 +42,6 @@ class ConnectedSetPage extends React.Component {
     }
 };
 
-const SetPage = connect(mapStateToProps)(ConnectedSetPage);
+const Unit = connect(mapStateToProps)(ConnectedUnit);
 
-export default SetPage;
+export default Unit;
