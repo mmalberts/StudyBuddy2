@@ -88,11 +88,11 @@ class ConnectedQuestionPage extends React.Component {
 
 	                      <select className="form-control" name="subjectName" id="subject" onChange={this.handleChange}>
 	                      	<option selected="selected">select a subject</option>
-	                        <option value="JavaScript">JavaScript</option>
+	                        <option value="Computer Science">Computer Science</option>
 	                        <option value="Math">Math</option> 
 	                        <option value="English">English</option>
-	                        <option value="Python">Python</option>
-	                        <option value="Biology">Biology</option>
+	                        <option value="Science">Science</option>
+	                        <option value="History">History</option>
 	                      </select>
                           <input className="form-input" type="text" id="name" name="unitName" onChange={this.handleChange} placeholder="name"/>
 	                      <input className="form-input larger" type="text" id="description" name="description" onChange={this.handleChange} placeholder="description"/>

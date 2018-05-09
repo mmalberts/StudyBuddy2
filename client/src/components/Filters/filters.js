@@ -16,14 +16,18 @@ const mapStateToProps = state => {
 
 class ConnectedFilters extends React.Component {
 
+    state = {
+        filteredFlashcards: this.props.user.filteredFlashcards
+    }
+
 	filterOnClick = event => {
         let filterValue = event.target.id;
         console.log(filterValue);
 
         let filtered = [];
 
-        for (var i = 0; i < this.state.flashcards.length; i++) {
-            if (this.state.flashcards[i].subjectName === filterValue) {
+        for (var i = 0; i < this.state.filteredFlashcards.length; i++) {
+            if (this.state.filteredFlashcards[i].subjectName === filterValue) {
                 filtered.push(this.state.flashcards[i]);
             }
         }
