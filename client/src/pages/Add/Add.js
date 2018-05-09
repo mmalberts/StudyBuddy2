@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/Navbar/";
-import BasicInfo from "../../components/BasicInfo/BasicInfo";
 import Question from "../../components/Question/Question";
 import { addUser } from "../../actions/index";
 import { connect } from "react-redux";
@@ -76,8 +75,6 @@ class ConnectedQuestionPage extends React.Component {
     return (
       <div className="fitpage">
         <Navbar firstName={localStorage.getItem("user")} />
-        <BasicInfo onClick={this.handleAddBasicInfo.bind(this)} />
-        {this.state.confirmBasicInfo && <Question />}
         <button onClick={this.handleAddQuestion}>+</button>
       </div>
     );
@@ -137,7 +134,6 @@ class ConnectedQuestionPage extends React.Component {
       </div>
     );
   }
-
 }
 
 const QuestionPage = connect(mapStateToProps, mapDispatchToProps)(
