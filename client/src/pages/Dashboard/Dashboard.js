@@ -77,16 +77,16 @@ class ConnectedDashboard extends React.Component {
         let self = this;
 
         var data = {
-            user_id: this.props.user.id
-        }
+          user_id: this.props.user.id
+        };
 
-      fetch("/api/units", {
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-          },
-          method: "POST",
-          body: JSON.stringify(data)      
+        fetch("/api/units", {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(data)      
         }).then(response => {
             if (response.status >= 400) {
                 throw new Error("Bad response from server.");

@@ -1,0 +1,17 @@
+.top {
+    margin-top: 100px;
+}
+
+.error {
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 75px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 40px;
+}
