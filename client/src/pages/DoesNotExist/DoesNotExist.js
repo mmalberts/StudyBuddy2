@@ -1,6 +1,6 @@
 import React from "react";
-import {addUser} from "../../actions/index";
-import {connect} from "react-redux";
+import { addUser } from "../../actions/index";
+import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
 import "./DoesNotExist.css";
 

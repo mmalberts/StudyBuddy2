@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 class Navbar extends React.Component {
@@ -23,8 +23,8 @@ class Navbar extends React.Component {
                 
                 <div className="nav-right">
                     <p className="welcome">welcome back, {this.props.firstName}!</p>
-                    <Link to ="/dashboard"><button id="study" className="gradient-button nav-button">study</button></Link>
-                    <Link to ="/"><button id="log out" className="gradient-button nav-button">log out</button></Link>
+                    <Link to="/dashboard"><button id="study" className="gradient-button nav-button">study</button></Link>
+                    <Link to="/"><button id="log out" className="gradient-button nav-button">log out</button></Link>
                 </div>
                 
                 { this.state.showMenu ? <Opened /> : null }
@@ -37,8 +37,8 @@ class Opened extends React.Component {
     render() {
         return (
             <div className="nav-opened">
-                <Link to ="/dashboard"><button id="study" className="gradient-button nav-button">study</button></Link>
-                <Link to ="/"><button id="log out" className="gradient-button nav-button">log out</button></Link>
+                <Link to="/dashboard"><button id="study" className="gradient-button nav-button">study</button></Link>
+                <Link to="/"><button id="log out" className="gradient-button nav-button">log out</button></Link>
             </div>
         );
     };

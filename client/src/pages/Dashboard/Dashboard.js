@@ -1,7 +1,7 @@
 import React from "react";
-import {addUser} from "../../actions/index";
-import {connect} from "react-redux";
-import Flashcards from "../../components/Flashcards";
+import { addUser } from "../../actions/index";
+import { connect } from "react-redux";
+import DisplayFlashcards from "../../components/DisplayFlashcards";
 import Navbar from "../../components/Navbar";
 import "./Dashboard.css";
 
@@ -21,18 +21,18 @@ class ConnectedDashboard extends React.Component {
         filteredFlashcards: []
     };
 
-    handleDeleteButton = event => {
-        var queryURL = "/api/units/" + event.target.id;
+    handleDeleteButton = e => {
+        var queryURL = "/api/units/" + e.target.id;
 
         fetch(queryURL, {
-            method: "delete"
+            method: "DELETE"
         }).then(response => response.json);
     };
 
-    filterOnClick = event => {
+    filterOnClick = e => {
         var url, data; 
 
-        if (event.target.id === "all") {
+        if (e.target.id === "all") {
             url = "/api/units";
             data = {
                 user_id: this.props.user.id
@@ -41,18 +41,18 @@ class ConnectedDashboard extends React.Component {
             url = "/api/units/filter";
             data = {
                 user_id: this.props.user.id,
-                subjectName: event.target.id
+                subjectName: e.target.id
             };
         }
 
         let self = this;
 
         fetch(url, {
+            method: "POST",
             headers : { 
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }, 
-            method: "POST",
             body:JSON.stringify(data)
         }).then(response => {
             if (response.status >= 400) {
@@ -81,11 +81,11 @@ class ConnectedDashboard extends React.Component {
         };
 
         fetch("/api/units", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            method: "POST",
             body: JSON.stringify(data)      
         }).then(response => {
             if (response.status >= 400) {
@@ -121,7 +121,7 @@ class ConnectedDashboard extends React.Component {
                         </div>
                     </div>
 
-		            <Flashcards 
+		            <DisplayFlashcards 
                         flashcards = {this.state.filteredFlashcards} 
                         handleDeleteButton = {this.handleDeleteButton}
 		            />
