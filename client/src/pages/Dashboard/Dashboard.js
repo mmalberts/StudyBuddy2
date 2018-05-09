@@ -3,7 +3,7 @@ import {addUser} from "../../actions/index";
 import {connect} from "react-redux";
 import Flashcards from "../../components/Flashcards";
 import Navbar from "../../components/Navbar";
-import "./dashboard.css";
+import "./Dashboard.css";
 
 const mapStateToProps = state => {
     return { user: state[0] };
@@ -33,7 +33,7 @@ class ConnectedDashboard extends React.Component {
         var url, data; 
 
         if (event.target.id === "all") {
-            url = "/api/units"
+            url = "/api/units";
             data = {
                 user_id: this.props.user.id
             };
