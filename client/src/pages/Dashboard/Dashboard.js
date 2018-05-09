@@ -26,12 +26,8 @@ class ConnectedDashboard extends React.Component {
         filteredFlashcards: []
     }
 
-    handleDeleteButton = (flashcardToRemove) => {
-        this.setState((prevState) => ({
-            flashcards: prevState.flashcards.filter((flashcard) => flashcardToRemove !== flashcard)
-        }))
-        console.log("delete button clicked");
-
+    handleDeleteButton = (event) => {
+        console.log("delete button clicked: " + event.target.id);
     }
 
     filterOnClick = event => {
