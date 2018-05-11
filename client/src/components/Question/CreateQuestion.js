@@ -18,9 +18,45 @@ export default class Questions extends React.Component {
     };
   }
 
-  saveAndIncrement = question => {
-    let questions = this.props.questions.slice("");
-    questions.push(question);
+  saveAndIncrement = e => {
+    e.preventDefault();
+    // let questions = this.props.questions.slice("");
+    // questions.push(question);
+    // let number = this.state.number + 1;
+    // this.setState({
+    //   question: "",
+    //   answer1: "",
+    //   answer2: "",
+    //   answer3: "",
+    //   correctAnswer: "",
+    //   number: number,
+    //   questions: questions
+    // });
+    let self = this;
+
+    let data = {
+      question: this.state.question,
+      answer1: this.state.answer1,
+      answer2: this.state.answer2,
+      answer3: this.state.answer3,
+      correctAnswer: this.state.correctAnswer
+    };
+
+    console.log("data: ", data);
+
+    fetch("/api/cards", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (response.status >= 400) {
+        throw new Error("Bad response from server.");
+      }
+      return response.json();
+    });
     let number = this.state.number + 1;
     this.setState({
       question: "",
@@ -28,13 +64,15 @@ export default class Questions extends React.Component {
       answer2: "",
       answer3: "",
       correctAnswer: "",
-      number: number,
-      questions: questions
+      number: number
     });
+    console.log("state number: ", this.state.number);
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+
+    console.log("change: ", this.state);
   };
 
   render() {
@@ -87,7 +125,8 @@ export default class Questions extends React.Component {
 
         <button
           className="btn"
-          onClick={() => this.saveAndIncrement(this.state)}
+          // onClick={() => this.saveAndIncrement(this.state)}
+          onClick={this.saveAndIncrement}
         >
           Save Question{" "}
         </button>
