@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return { addUser: user => dispatch(addUser(user)) };
+    return { addUser: user => dispatch(addUser(user))}     
 };
 
 class ConnectedDashboard extends React.Component {
