@@ -12,20 +12,7 @@ module.exports = app => {
         var password = "";
         var confirmPassword = "";
 
-        if (req.body.password !== req.body.confirmPassword){
-            throw new Error("Passwords must match!");
-        } else {
-            hashing();
-        }
-
-        hashing = () => {
-            var saltRounds = 10;
-            var salt = bcrypt.genSaltSync(saltRounds);
-            var password = bcrypt.hashSync(req.body.password, salt);
-            createUser(password);
-        }
-
-        createUser = (pass) => {
+        createUser = pass => {
             db.User.findOrCreate({
                 where: {
                     email: req.body.email,
@@ -44,6 +31,19 @@ module.exports = app => {
                 }
             });
         };
+        
+        hashing = () => {
+            var saltRounds = 10;
+            var salt = bcrypt.genSaltSync(saltRounds);
+            var password = bcrypt.hashSync(req.body.password, salt);
+            createUser(password);
+        };
+
+        if (req.body.password !== req.body.confirmPassword){
+            throw new Error("Passwords must match!");
+        } else {
+            hashing();
+        }
     });
 
     app.post("/api/users/login", (req, res) => {
