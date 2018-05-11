@@ -17,7 +17,7 @@ const App = () => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/questionpage" component={QuestionPage} />
       <Route path="/unit/:id" component={Unit} />
-      <Route path="/AddQuestion" component={AddQuestion} />
+      <Route path="/AddQuestion/:unitId" component={AddQuestion} />
       <Route component={DoesNotExist} />
     </Switch>
   </BrowserRouter>
