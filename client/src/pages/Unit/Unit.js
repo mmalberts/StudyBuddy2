@@ -12,46 +12,41 @@ class ConnectedUnit extends React.Component {
 	state = {
 	    title: "",
 	    description: "",
-	    user: this.props.user.firstName + ' ' + this.props.user.lastName,
+	    user: this.props.user.firstName + " " + this.props.user.lastName,
 	    bg: "",
 	    link: "./questionpage"
   	};
 
-  	componentDidMount(){
-
+  	componentDidMount() {
 		let self = this;
-	    var unitId = {id:Number(this.props.match.params.id)};
+	    var unitId = { id:Number(this.props.match.params.id) };
 
 	    fetch("/api/units/unit", {
-	      headers: {
-	        "Content-Type": "application/json",
-	        Accept: "application/json"
-	      },
-	      method: "POST",
-	      body: JSON.stringify(unitId)  
-
-	      }).then(function(response) {
-	            if (response.status >= 400) {
-	                throw new Error("Bad response from server");
-	            }
-	            console.log(response);
-	            //var data = JSON.stringify(response);
-	            //console.log(data);
-	            return response.json();
-	        }).then(function(data) {
-	            self.setState({
-	                title: data[0].unitName,
-	                description: data[0].description,
-	                bg: data[0].bg
-	            })
-	        }).catch(err => {
-	            console.log('caught it!', err);
-	        })
-  	}
+	    	method: "POST",
+	      	headers: {
+		        "Content-Type": "application/json",
+		        "Accept": "application/json"
+	      	},
+	      	body: JSON.stringify(unitId)
+	    }).then(response => {
+	        if (response.status >= 400) {
+	            throw new Error("Bad response from server.");
+	        }
+	        return response.json();
+	    }).then(data => {
+	        self.setState({
+	            title: data[0].unitName,
+	            description: data[0].description,
+	            bg: data[0].bg
+	        });
+	    }).catch(err => {
+	        console.log("Error: " + err);
+	    });
+  	};
 
     render() {
         return (
-            <div className="background example-page">
+            <div className="background unitpage" style={{backgroundImage: "url("+this.state.bg+")"}}>
 	            <Navbar firstName = {this.props.user.firstName}/>
 
         <div className="row">

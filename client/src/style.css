@@ -15,6 +15,11 @@ body {
     overflow-x: hidden;
 }
 
+div.container {
+    width: 85%;
+    margin: 0px auto;
+}
+
 div.background {
     position: absolute;
     top: 0;
@@ -22,30 +27,26 @@ div.background {
     height: 100vh;
 }
 
-div.homepage {
-    /*background: url("../../public/assets/images/main.jpg");*/
-    background: url("https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbe45d5a16eeb2c8009b0959f15db36a&auto=format&fit=crop&w=1350&q=80");
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-size: cover;
+div.navbar {
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    margin: 0px !important;
+    padding: 0px 10px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px !important;
+    font-weight: bold;
+    text-transform: lowercase;
+    text-align: left;
     overflow: hidden;
 }
 
-div.example-page {
-    background: url("https://images.unsplash.com/photo-1447968954315-3f0c44f7313c?ixlib=rb-0.3.5&s=fe2f94cb8243ca4414e4ab231462999d&auto=format&fit=crop&w=1267&q=80");
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-size: cover;
-    overflow: hidden;
-}
-
-div.container {
-    width: 85%;
-    margin: 0px auto;
-}
-
-div.fitpage {
-    overflow: hidden;
+.gradient {
+    background: -webkit-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: -moz-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: -o-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: linear-gradient(135deg, #7ac36e, #78c9b1);
+    color: white;
 }
 
 /* ------------------------------------ HEADERS AND TEXT */
@@ -70,29 +71,7 @@ a:hover {
     text-decoration: none;
 }
 
-/* ------------------------------------ SHARED CLASSES */
-
-div.navbar {
-    position: absolute;
-    top: 0px;
-    width: 100vw;
-    margin: 0px !important;
-    padding: 0px 10px;
-    font-family: "Quicksand", sans-serif;
-    font-size: 15px !important;
-    font-weight: bold;
-    text-transform: lowercase;
-    text-align: left;
-    overflow: hidden;
-}
-
-.gradient {
-    background: -webkit-linear-gradient(135deg, #7ac36e, #78c9b1);
-    background: -moz-linear-gradient(135deg, #7ac36e, #78c9b1);
-    background: -o-linear-gradient(135deg, #7ac36e, #78c9b1);
-    background: linear-gradient(135deg, #7ac36e, #78c9b1);
-    color: white;
-}
+/* ------------------------------------ BUTTONS */
 
 button {
     border: none;
@@ -119,26 +98,10 @@ button.gradient-button {
 
 button.white-button {
     padding: 5px 10px;
-    font-family: "Quicksand", sans-serif;
     font-size: 20px;
     font-weight: bold;
     background-color: #ffffff;
     color: #78c9b1;
-}
-
-button.outline-button {
-    padding: 5px 10px;
-    font-family: "Quicksand", sans-serif;
-    font-size: 20px;
-    background: transparent;
-    border: 2px solid #ffffff;
-    border-radius: 10px;
-    color: #ffffff;
-}
-
-.glyphicon {
-    color: #78c9b1 !important;
-    font-size: 50px;
 }
 
 /* ------------------------------------ FORMS */
