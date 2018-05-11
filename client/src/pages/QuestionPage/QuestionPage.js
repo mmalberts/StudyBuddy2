@@ -22,7 +22,7 @@ export default class QuestionPage extends React.Component {
     this.setState(() => ({
       chosenAns: ans
     }));
-    if (this.state.chosenAns == this.state.correctAns) {
+    if (this.state.chosenAns === this.state.correctAns) {
       this.setState(() => ({
         ansStatus: true
       }));
