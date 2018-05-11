@@ -43,6 +43,7 @@ class ConnectedLogin extends React.Component {
             if (data.firstName !== undefined) {
                 this.props.addUser({
                     firstName: data.firstName, 
+                    lastName: data.lastName,
                     id: data.id
                 });
                 this.setState({ signedIn: true });

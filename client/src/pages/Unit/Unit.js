@@ -9,26 +9,55 @@ const mapStateToProps = state => {
 };
 
 class ConnectedUnit extends React.Component {
-  state = {
-    title: "Vocabulary",
-    description: "A simple vocab test to quiz your knowledge.",
-    user: "Amanda Ramirez",
-    link: "./questionpage"
-  };
+	state = {
+	    title: "",
+	    description: "",
+	    user: this.props.user.firstName + ' ' + this.props.user.lastName,
+	    link: "./questionpage"
+  	};
 
-  render() {
-    return (
-      <div className="background example-page">
-        <Navbar firstName={this.props.user.firstName} />
+  	componentDidMount(){
 
-        <div className="row">
-          <div className="about">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <button className="gradient-button set-title">
-                {this.state.title}
-              </button>
-              <h3 className="byline">by {this.state.user}</h3>
-            </div>
+		let self = this;
+	    var unitId = {id:Number(this.props.match.params.id)};
+
+	    fetch("/api/units/unit", {
+	      headers: {
+	        "Content-Type": "application/json",
+	        Accept: "application/json"
+	      },
+	      method: "POST",
+	      body: JSON.stringify(unitId)  
+
+	      }).then(function(response) {
+	            if (response.status >= 400) {
+	                throw new Error("Bad response from server");
+	            }
+	            console.log(response);
+	            //var data = JSON.stringify(response);
+	            //console.log(data);
+	            return response.json();
+	        }).then(function(data) {
+	            self.setState({
+	                title: data[0].unitName,
+	                description: data[0].description
+	            })
+	        }).catch(err => {
+	            console.log('caught it!', err);
+	        })
+  	}
+
+    render() {
+        return (
+            <div className="background example-page">
+	            <Navbar firstName = {this.props.user.firstName}/>
+                
+                <div className="row">
+			        <div className="about">
+			          	<div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				            <button className="gradient-button set-title">{this.state.title}</button>
+				            <h3 className="byline">by {this.state.user}</h3>
+			          	</div>
 
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
               <div className="description">
