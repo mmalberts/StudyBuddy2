@@ -103,7 +103,7 @@ class ConnectedAddUnit extends React.Component {
                         placeholder="background image url"
                     />
                     
-                    <button id="saveDeck" className="white-button" onClick={this.saveTopic}>create unit</button>
+                    <button id="saveDeck" className="white-button create" onClick={this.saveTopic}>create unit</button>
                 </div>
             </div>
         );

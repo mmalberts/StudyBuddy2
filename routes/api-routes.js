@@ -30,6 +30,18 @@ module.exports = app => {
 		});
 	});
 
+	//Retrieve a single unit
+	app.post("/api/units/unit", (req, res) => {
+		var query = {};
+		query.id = req.body.id;
+		db.Unit.findAll({
+			where:query,
+			include: [db.User]
+		}).then(units => {
+			res.json(units);
+		});
+	});
+
 	// get cards based on unit id number
 	app.get("/api/cards/:unitId", (req, res) => {
 		db.Card.findAll({

@@ -1,3 +1,5 @@
+/* ------------------------------------ GENERAL */
+
 div.filterholder {
     margin-top: 100px;
 }
@@ -6,8 +8,11 @@ div.filterlist {
     margin-bottom: -100px;
 }
 
+/* ------------------------------------ FILTERS */
+
 button.filter {
    margin-right: 10px;
+   margin-bottom: 10px;
    padding: 5px 20px !important;
    border-radius: 20px;
    border: 2px solid white;

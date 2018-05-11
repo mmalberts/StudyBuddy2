@@ -1,6 +1,6 @@
 /* ------------------------------------ GENERAL */
 
-h2.dashboard {
+.dashboard {
 	margin-top: 100px;
 }
 
@@ -9,6 +9,8 @@ div.flashcard-panel {
 	width: 100%;
 	margin-bottom: 15px;
 }
+
+/* ------------------------------------ FLASHCARDS */
 
 div.cardbox {
 	display: inline-block;
@@ -24,8 +26,6 @@ div.card {
 	min-height: 250px;
 }
 
-/* ------------------------------------ BACKGROUNDS */
-
 .card-default {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -37,7 +37,7 @@ div.card {
 button.card-title {
 	position: absolute;
 	bottom: 10px;
-	padding: 5px 15px;
+	padding: 5px 20px !important;
 	border-radius: 25px;
 	cursor: pointer;
 }
@@ -53,7 +53,7 @@ button.delete {
 	position: absolute;
 	top: 10px;
 	right: 10px;
-	padding: 5px 13px;
+	padding: 5px 13px !important;
 	border-radius: 100px;
 }
 
