@@ -6,61 +6,18 @@ div.qform {
     text-align: center;
 }
 
-h1.qh1 {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff;
-}
-
-h2.qh2 {
-    margin-top: 25px;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: left;
-    color: #ffffff;
-}
-
-h3.qh3 {
-    margin-top: 15px;
-    font-size: 20px;
-    text-align: left;
-    color: #ffffff;
-}
-
-input.addnew {
-    width: 100%;
-    margin: 7px auto;
-}
-
-input.largetext {
-    height: 200px;
-}
-
-button.oversized {
-    margin-top: 25px;
-    padding: 10px 30px;
-    font-size: 30px;
-    border-radius: 50px !important;
-}
+/* ------------------------------------ HEADERS AND TEXT */
 
 h2.formh2 {
     margin-top: 100px;
+    margin-bottom: 15px;
     font-size: 30px;
     font-weight: bold;
     text-align: left;
     color: #ffffff;
 }
 
-h3.qh3 {
-    margin-top: 15px;
-    font-size: 20px;
-    text-align: left;
-    color: #ffffff;
-}
+/* ------------------------------------ FORM */
 
 input.form-input {
     width: 100%;
@@ -71,9 +28,10 @@ input.larger {
     height: 200px;
 }
 
-button.oversized {
-    margin-top: 25px;
-    padding: 10px 30px;
-    font-size: 30px;
-    border-radius: 50px !important;
+/* ------------------------------------ BUTTONS */
+
+button.create {
+    margin-top: 10px;
+    padding: 5px 20px !important;
+    font-size: 25px !important;
 }

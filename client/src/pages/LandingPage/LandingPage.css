@@ -1,0 +1,9 @@
+/* ------------------------------------ GENERAL */
+
+div.homepage {
+    background: url("https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbe45d5a16eeb2c8009b0959f15db36a&auto=format&fit=crop&w=1350&q=80");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+    overflow: hidden;
+}
