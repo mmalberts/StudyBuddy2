@@ -13,6 +13,7 @@ class ConnectedUnit extends React.Component {
 	    title: "",
 	    description: "",
 	    user: this.props.user.firstName + ' ' + this.props.user.lastName,
+	    bg: "",
 	    link: "./questionpage"
   	};
 
@@ -40,7 +41,8 @@ class ConnectedUnit extends React.Component {
 	        }).then(function(data) {
 	            self.setState({
 	                title: data[0].unitName,
-	                description: data[0].description
+	                description: data[0].description,
+	                bg: data[0].bg
 	            })
 	        }).catch(err => {
 	            console.log('caught it!', err);
