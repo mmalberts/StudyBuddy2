@@ -69,11 +69,14 @@ class ConnectedAddUnit extends React.Component {
                         onChange={this.handleChange}
                     >
                         <option value="default">select a subject</option>
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="Math">Math</option>
-                        <option value="English">English</option>
-                        <option value="Python">Python</option>
                         <option value="Biology">Biology</option>
+                        <option value="English">English</option>
+                        <option value="History">History</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Nutrition">Nutrition</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Psychology">Psychology</option>
+                        <option value="Science">Science</option>
                     </select>
                     
                     <input
