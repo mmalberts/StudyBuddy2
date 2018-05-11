@@ -62,7 +62,7 @@ class ConnectedUnit extends React.Component {
                                 <Link to={this.state.link}>
                                     <button className="gradient-button split">continue studying</button>
                                 </Link>
-                                <Link to="/AddQuestion">
+                                <Link to={"/AddQuestion/" + this.props.match.params.id}>
                                     <button className="gradient-button split">edit flashcards</button>
                                 </Link>
                             </div>
