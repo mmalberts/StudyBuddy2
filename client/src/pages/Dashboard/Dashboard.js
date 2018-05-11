@@ -112,11 +112,14 @@ class ConnectedDashboard extends React.Component {
                         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div className="row filterlist">
                                 <button className="filter standard white-button" id="all" onClick={this.filterOnClick}>all</button>
-                                <button className="filter standard white-button" id="Math" onClick={this.filterOnClick}>math</button>
-                                <button className="filter standard white-button" id="Science" onClick={this.filterOnClick}>science</button>
+                                <button className="filter standard white-button" id="Biology" onClick={this.filterOnClick}>biology</button>
                                 <button className="filter standard white-button" id="English" onClick={this.filterOnClick}>english</button>
                                 <button className="filter standard white-button" id="History" onClick={this.filterOnClick}>history</button>
-                                <button className="filter standard white-button" id="Computer Science" onClick={this.filterOnClick}>computer science</button>
+                                <button className="filter standard white-button" id="Mathematics" onClick={this.filterOnClick}>mathematics</button>
+                                <button className="filter standard white-button" id="Nutrition" onClick={this.filterOnClick}>nutrition</button>
+                                <button className="filter standard white-button" id="Programming" onClick={this.filterOnClick}>programming</button>
+                                <button className="filter standard white-button" id="Psychology" onClick={this.filterOnClick}>psychology</button>
+                                <button className="filter standard white-button" id="Science" onClick={this.filterOnClick}>science</button>
                             </div>
                         </div>
                     </div>
