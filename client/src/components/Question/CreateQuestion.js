@@ -14,7 +14,9 @@ export default class Questions extends React.Component {
       answer2: "",
       answer3: "",
       correctAnswer: "",
-      number: 1
+      UnitId: this.props.unitId,
+      gotItRight: false,
+      cardId: 1
     };
   }
 
@@ -39,7 +41,10 @@ export default class Questions extends React.Component {
       answer1: this.state.answer1,
       answer2: this.state.answer2,
       answer3: this.state.answer3,
-      correctAnswer: this.state.correctAnswer
+      correctAnswer: this.state.correctAnswer,
+      UnitId: this.state.UnitId,
+      gotItRight: this.state.gotItRight,
+      cardId: this.state.cardId
     };
 
     console.log("data: ", data);
@@ -57,16 +62,16 @@ export default class Questions extends React.Component {
       }
       return response.json();
     });
-    let number = this.state.number + 1;
+    let number = this.state.cardId + 1;
     this.setState({
       question: "",
       answer1: "",
       answer2: "",
       answer3: "",
       correctAnswer: "",
-      number: number
+      cardId: number
     });
-    console.log("state number: ", this.state.number);
+    console.log("state number: ", this.state.cardId);
   };
 
   handleChange = e => {
