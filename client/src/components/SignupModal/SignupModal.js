@@ -14,7 +14,7 @@ const SignupModal = props => {
         >
             { props.confirmSignup ? (
                 <div className="modalbox">
-                    <h1>Thank you for signing up!</h1>
+                    <h1 className="modalh1">Thank you for signing up!</h1>
                     <Link to="/"><button onClick={props.handleClearModal} className="gradient-button modalbutton">get started!</button></Link>
                 </div>
             ) : (
