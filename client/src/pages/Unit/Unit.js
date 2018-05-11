@@ -48,37 +48,31 @@ class ConnectedUnit extends React.Component {
         return (
             <div className="background unitpage" style={{backgroundImage: "url("+this.state.bg+")"}}>
 	            <Navbar firstName = {this.props.user.firstName}/>
+                
+              <div className="row">
+			          <div className="about">
+			          	<div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				            <button className="gradient-button set-title">{this.state.title}</button>
+				            <h3 className="byline">by {this.state.user}</h3>
+			          	</div>
 
-        <div className="row">
-          <div className="about">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <button className="gradient-button set-title">
-                {this.state.title}
-              </button>
-              <h3 className="byline">by {this.state.user}</h3>
+                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                            <div className="description">
+                                {this.state.description}
+                                <Link to={this.state.link}>
+                                    <button className="gradient-button split">continue studying</button>
+                                </Link>
+                                <Link to="/AddQuestion">
+                                    <button className="gradient-button split">edit flashcards</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
-              <div className="description">
-                {this.state.description}
-                <Link to={this.state.link}>
-                  <button className="gradient-button split">
-                    continue studying
-                  </button>
-                </Link>
-                <Link to="/AddQuestion">
-                  <button className="gradient-button split">
-                    edit flashcards
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+        );
+    };
+};
 
 const Unit = connect(mapStateToProps)(ConnectedUnit);
 
