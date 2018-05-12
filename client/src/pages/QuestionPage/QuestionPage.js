@@ -79,16 +79,37 @@ class QuestionPage extends React.Component {
 
         <div className="container text-center">
           <div className="row content">
-            <h1 className="question">{this.state.question}</h1>
-            {this.state.answerArr.map(answer => (
-              <button
-                key={answer}
-                className="answer"
-                onClick={this.handleAnsClick}
-                value={answer}
-              >
-                {answer}
-              </button>
+            {console.log("user question state: ", this.state.userQuestions)}
+            {this.state.userQuestions.map(ques => (
+              <div>
+                <h1 className="question">{ques.question}</h1>
+                <button
+                  key={ques.answer1}
+                  className="outline-button answer"
+                  onClick={this.handleAnsClick}
+                  value={ques.answer1}
+                >
+                  {ques.answer1}
+                </button>
+
+                <button
+                  key={ques.answer2}
+                  className="outline-button answer"
+                  onClick={this.handleAnsClick}
+                  value={ques.answer2}
+                >
+                  {ques.answer2}
+                </button>
+
+                <button
+                  key={ques.answer3}
+                  className="outline-button answer"
+                  onClick={this.handleAnsClick}
+                  value={ques.answer3}
+                >
+                  {ques.answer3}
+                </button>
+              </div>
             ))}
           </div>
         </div>
