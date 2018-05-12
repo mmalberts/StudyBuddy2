@@ -15,7 +15,7 @@ class QuestionPage extends React.Component {
     ansStatus: undefined,
     userQuestions: [],
     progress: 65, // replace with equation: index of current question / total number of questions
-    score: 12
+    score: ""
   };
 
   componentDidMount() {
@@ -41,6 +41,25 @@ class QuestionPage extends React.Component {
       .catch(err => {
         console.log("Error: ", err);
       });
+
+      this.calculateScore();
+
+  }
+
+  calculateScore = () => {
+
+      let calcScore = 0;
+
+      for(var i = 0; i < this.state.userQuestions.length; i++){
+        if(this.state.userQuestions[i].gotItRight){
+          calcScore++;
+        }
+      }
+
+      this.setState({
+        score: calcScore
+      })
+
   }
 
   handleAnsClick = e => {
