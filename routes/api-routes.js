@@ -43,12 +43,12 @@ module.exports = app => {
 	});
 
 	// get cards based on unit id number
-	app.get("/api/cards/:unitId", (req, res) => {
+	app.post("/api/cards/:unitId", (req, res) => {
 		db.Card.findAll({
 			where: {
 				UnitId: req.params.unitId
-			},
-			include: [db.Unit]
+			}
+			//include: [db.Unit]
 		}).then(cards => {
 			res.json(cards);
 		});
