@@ -22,7 +22,11 @@ export default class QuestionPage extends React.Component {
     this.setState(() => ({
       chosenAns: ans
     }));
-    if (this.state.chosenAns === this.state.correctAns) {
+    // console.log("chosenAns: ", this.state.chosenAns);
+    if (
+      this.state.ansStatus &&
+      this.state.chosenAns === this.state.correctAns
+    ) {
       this.setState(() => ({
         ansStatus: true
       }));
@@ -30,7 +34,10 @@ export default class QuestionPage extends React.Component {
       this.setState(() => ({
         ansStatus: false
       }));
+      console.log("ansStatus if: ", this.state.ansStatus);
     }
+
+    this.state.ansStatus ? <h1>state is set</h1> : <h1> state is not set </h1>;
     console.log("correctAns: ", this.state.correctAns);
     console.log("chosenAns: ", this.state.chosenAns);
     console.log("ansStatus: ", this.state.ansStatus);
@@ -39,7 +46,7 @@ export default class QuestionPage extends React.Component {
   render() {
     return (
       <div className="fitpage">
-        <Navbar firstName={localStorage.getItem("user")} />
+        {/* <Navbar firstName={localStorage.getItem("user")} /> */}
 
         <div className="row info">
           <button className="white-button mini-title">
