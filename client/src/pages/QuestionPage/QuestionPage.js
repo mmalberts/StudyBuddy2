@@ -14,7 +14,9 @@ class QuestionPage extends React.Component {
     chosenAns: "",
     ansStatus: undefined,
     userQuestions: [],
-    progress: 65, // replace with equation: index of current question / total number of questions
+    currentQuestion: 0,
+    totalQuestions: 0,
+    progress: 0,
     score: ""
   };
 
@@ -35,7 +37,8 @@ class QuestionPage extends React.Component {
         console.log(responseJson[0].Unit.unitName);
         this.setState(() => ({
           userQuestions: responseJson,
-          title: responseJson[0].Unit.unitName
+          title: responseJson[0].Unit.unitName,
+          totalQuestions: responseJson.length
         }));
       })
       .catch(err => {
@@ -49,6 +52,7 @@ class QuestionPage extends React.Component {
   calculateScore = () => {
 
       let calcScore = 0;
+      let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
 
       for(var i = 0; i < this.state.userQuestions.length; i++){
         if(this.state.userQuestions[i].gotItRight){
@@ -56,10 +60,16 @@ class QuestionPage extends React.Component {
         }
       }
 
-      this.setState({
-        score: calcScore
-      })
+      if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
+        this.setState({ progress: calcProgress });
+      } else {
+        this.setState({ progress: 0 });
+      }
 
+      this.setState({
+        score: calcScore,
+        currentQuestion: this.state.currentQuestion++,
+      })
   }
 
   handleAnsClick = e => {
@@ -88,7 +98,7 @@ class QuestionPage extends React.Component {
         <div className="row info">
           <button className="white-button mini-title">{this.state.title}</button>
           <h3 className="mini-byline">by {this.state.user}</h3>
-          <button className="white-button mini-title score">{this.state.score} / 15</button>
+          <button className="white-button mini-title score">{this.state.score} / {this.state.totalQuestions}</button>
         </div>
 
         <div className="container text-center">
