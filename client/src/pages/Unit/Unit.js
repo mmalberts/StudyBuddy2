@@ -63,25 +63,20 @@ class ConnectedUnit extends React.Component {
               </button>
               <h3 className="byline">by {this.state.user}</h3>
             </div>
-
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
-              <div className="description">
-                {this.state.description}
-                <Link to={"/questionpage/" + this.props.match.params.id}>
-                  <button className="gradient-button split">
-                    continue studying
-                  </button>
-                </Link>
-                <Link to={"/AddQuestion/" + this.props.match.params.id}>
-                  <button className="gradient-button split">
-                    edit flashcards
-                  </button>
-                </Link>
-              </div>
+                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                            <div className="description">
+                                {this.state.description}
+                                <Link to={"/questionpage/" + this.props.match.params.id}>
+                                    <button className="gradient-button split">continue studying</button>
+                                </Link>
+                                <Link to={"/AddQuestion/" + this.props.match.params.id}>
+                                    <button className="gradient-button split">edit flashcards</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
     );
   }
 }
