@@ -33,6 +33,7 @@ class ConnectedDashboard extends React.Component {
         fetch(unitQueryURL, {
             method: "DELETE"
         }).then(response => response.json);
+        window.location.reload();
     };
 
     filterOnClick = e => {
