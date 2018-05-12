@@ -19,7 +19,7 @@ export default class Questions extends React.Component {
       UnitId: this.props.unitId,
       gotItRight: false,
       cardId: 1,
-      unitPageLink: "/unit/" + this.UnitId
+      unitPageLink: "/unit/" + this.props.unitId
     };
   }
 
