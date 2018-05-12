@@ -1,5 +1,10 @@
 /* ------------------------------------ ELEMENTS */
 
+div.fitpage {
+	margin-bottom: 15px;
+	
+}
+
 div.info {
     margin: 85px auto 25px 25px;
 }
@@ -58,4 +63,29 @@ h3.mini-byline {
     font-size: 20px;
     text-transform: lowercase;
     color: #ffffff;
+}
+
+/* ------------------------------------ PROGRESS BAR */
+
+div.progress {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	height: 25px;
+	margin: 5px 0px 0px 0px;
+	padding-top: 10px;
+	border-radius: 0px;
+	background: -webkit-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: -moz-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: -o-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: linear-gradient(135deg, #7ac36e, #78c9b1);
+    color: #ffffff;
+}
+
+div.progress-bar {
+	padding-right: 5px;
+	background: #ffffff;
+	text-align: right;
+	color: #78c9b1;
+	font-weight: bold;
 }
