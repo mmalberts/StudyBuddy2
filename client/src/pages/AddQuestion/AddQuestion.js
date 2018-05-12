@@ -9,59 +9,56 @@ const mapStateToProps = state => {
 };
 
 class AddQuestion extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       userQuestions: []
     };
-  }  
-  componentDidMount(){
-        let self = this;
-        var data = {
-          UserId: this.props.match.params.unitId
-        }
-        var questionsArr = [];
+  }
+  componentDidMount() {
+    let self = this;
+    var data = {
+      UserId: this.props.match.params.unitId
+    };
+    var questionsArr = [];
 
-        fetch("/api/cards/" + this.props.match.params.unitId, {
-            method: "POST",
-            body: data
-        }).then(response => {
-            return response.json();         
-        }).then(responseJson => {
-          console.log(responseJson);
-          self.setState({
-            userQuestions: responseJson
-          })
-        }).catch(err => {
-            console.log("Error: ", err);
+    fetch("/api/cards/" + this.props.match.params.unitId, {
+      method: "POST",
+      body: data
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log(responseJson);
+        self.setState({
+          userQuestions: responseJson
         });
+      })
+      .catch(err => {
+        console.log("Error: ", err);
+      });
   }
 
+  render() {
+    return (
+      <div>
+        <Navbar firstName={this.props.user.firstName} />
 
-    render() {
-        return (
-            <div>
-                <Navbar firstName = {this.props.user.firstName}/>
+        <div className="container">
+          <div className="qholder">
+            {this.state.userQuestions && (
+              <ul>
+                {this.state.userQuestions.map(q => <li>{q.question}</li>)}
+              </ul>
+            )}
 
-                <div className="container">
-                    <div className="qholder">
-                        {this.state.userQuestions && (
-                            <ul>
-                                {this.state.userQuestions.map(q => <li>{q.question}</li>)}
-                    
-                            </ul>
-                        )}
-                    
-                        <CreateQuestion unitId={this.props.match.params.unitId} />
-                    </div>
-                </div>
-            </div>
-        );
-    };
-};
-
-
+            <CreateQuestion unitId={this.props.match.params.unitId} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default connect(mapStateToProps)(AddQuestion);
-
