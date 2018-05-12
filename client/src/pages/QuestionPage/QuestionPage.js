@@ -86,12 +86,30 @@ class QuestionPage extends React.Component {
               <div>
                 <h1 className="question">{ques.question}</h1>
                 <button
-                  key={ques.answer}
+                  key={ques.answer1}
                   className="outline-button answer"
                   onClick={this.handleAnsClick}
-                  value={ques.answer}
+                  value={ques.answer1}
                 >
                   {ques.answer1}
+                </button>
+
+                <button
+                  key={ques.answer2}
+                  className="outline-button answer"
+                  onClick={this.handleAnsClick}
+                  value={ques.answer2}
+                >
+                  {ques.answer2}
+                </button>
+
+                <button
+                  key={ques.answer3}
+                  className="outline-button answer"
+                  onClick={this.handleAnsClick}
+                  value={ques.answer3}
+                >
+                  {ques.answer3}
                 </button>
               </div>
 
