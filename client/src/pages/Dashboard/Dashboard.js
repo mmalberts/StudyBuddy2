@@ -22,9 +22,15 @@ class ConnectedDashboard extends React.Component {
     };
 
     handleDeleteButton = e => {
-        var queryURL = "/api/units/" + e.target.id;
+        var cardQueryUrl = "/api/cards/" + e.target.id;
 
-        fetch(queryURL, {
+        fetch(cardQueryUrl, {
+            method: "DELETE"
+        }).then(response => response.json);
+
+        var unitQueryURL = "/api/units/" + e.target.id;
+
+        fetch(unitQueryURL, {
             method: "DELETE"
         }).then(response => response.json);
     };
