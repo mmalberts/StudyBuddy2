@@ -47,8 +47,8 @@ module.exports = app => {
 		db.Card.findAll({
 			where: {
 				UnitId: req.params.unitId
-			}
-			//include: [db.Unit]
+			},
+			include: [db.Unit]
 		}).then(cards => {
 			res.json(cards);
 		});
