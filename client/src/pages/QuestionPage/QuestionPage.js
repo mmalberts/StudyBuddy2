@@ -20,7 +20,8 @@ class QuestionPage extends React.Component {
     correctAns: "ok",
     chosenAns: "",
     ansStatus: undefined,
-    userQuestions: []
+    userQuestions: [],
+    progress: 65 // replace with equation: index of current question / total number of questions
   };
 
   componentDidMount() {
@@ -69,7 +70,7 @@ class QuestionPage extends React.Component {
   render() {
     return (
       <div className="fitpage">
-        {/* <Navbar firstName={this.props.user.firstName} /> */}
+        <Navbar firstName={this.props.user.firstName} /> 
 
         <div className="row info">
           <button className="white-button mini-title">
@@ -115,6 +116,10 @@ class QuestionPage extends React.Component {
 
             ))}
           </div>
+        </div>
+
+        <div className="progress">
+          <div className="progress-bar" role="progressbar" style={{ width: this.state.progress + "%"}} aria-valuenow={this.state.progress} aria-valuemin="0" aria-valuemax="100">{this.state.progress}%</div>
         </div>
       </div>
     );
