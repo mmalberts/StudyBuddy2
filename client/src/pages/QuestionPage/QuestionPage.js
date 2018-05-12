@@ -19,19 +19,40 @@ class QuestionPage extends React.Component {
     ],
     correctAns: "ok",
     chosenAns: "",
-    ansStatus: undefined
+    ansStatus: undefined,
+    userQuestions: []
   };
+
+  componentDidMount() {
+    let self = this;
+    var data = {
+      UserId: this.props.match.params.unitId
+    };
+    fetch("/api/cards/" + this.props.match.params.unitId, {
+      method: "POST",
+      body: data
+    })
+      .then(response => {
+        console.log(response);
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log("responseJson: ", responseJson);
+        this.setState(() => ({
+          userQuestions: responseJson
+        }));
+      })
+      .catch(err => {
+        console.log("Error: ", err);
+      });
+  }
 
   handleAnsClick = e => {
     var ans = e.target.value;
     this.setState(() => ({
       chosenAns: ans
     }));
-    // console.log("chosenAns: ", this.state.chosenAns);
-    if (
-      this.state.ansStatus &&
-      this.state.chosenAns === this.state.correctAns
-    ) {
+    if (this.state.chosenAns === this.state.correctAns) {
       this.setState(() => ({
         ansStatus: true
       }));
@@ -39,10 +60,7 @@ class QuestionPage extends React.Component {
       this.setState(() => ({
         ansStatus: false
       }));
-      console.log("ansStatus if: ", this.state.ansStatus);
     }
-
-    this.state.ansStatus ? <h1>state is set</h1> : <h1> state is not set </h1>;
     console.log("correctAns: ", this.state.correctAns);
     console.log("chosenAns: ", this.state.chosenAns);
     console.log("ansStatus: ", this.state.ansStatus);
@@ -52,10 +70,14 @@ class QuestionPage extends React.Component {
     return (
       <div className="fitpage">
 <<<<<<< HEAD
+<<<<<<< HEAD
         {/* <Navbar firstName={localStorage.getItem("user")} /> */}
 =======
         <Navbar firstName={this.props.user.firstName} />
 >>>>>>> 1a0ef91... added redux to question components
+=======
+        {/* <Navbar firstName={this.props.user.firstName} /> */}
+>>>>>>> b09518a... partial questions page, needs proper mapping of questions and answers
 
         <div className="row info">
           <button className="white-button mini-title">
@@ -66,16 +88,19 @@ class QuestionPage extends React.Component {
 
         <div className="container text-center">
           <div className="row content">
-            <h1 className="question">{this.state.question}</h1>
-            {this.state.answerArr.map(answer => (
-              <button
-                key={answer}
-                className="outline-button answer"
-                onClick={this.handleAnsClick}
-                value={answer}
-              >
-                {answer}
-              </button>
+            {console.log("user question state: ", this.state.userQuestions)}
+            {this.state.userQuestions.map(ques => (
+              <div>
+                <h1 className="question">{ques.question}</h1>
+                <button
+                  key={ques.answer}
+                  className="outline-button answer"
+                  onClick={this.handleAnsClick}
+                  value={ques.answer}
+                >
+                  {ques.answer1}
+                </button>
+              </div>
             ))}
           </div>
         </div>
