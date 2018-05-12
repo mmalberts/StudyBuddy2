@@ -60,7 +60,7 @@ class ConnectedUnit extends React.Component {
                         <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
                             <div className="description">
                                 {this.state.description}
-                                <Link to={this.state.link}>
+                                <Link to={"/questionpage/" + this.props.match.params.id}>
                                     <button className="gradient-button split">continue studying</button>
                                 </Link>
                                 <Link to={"/AddQuestion/" + this.props.match.params.id}>
