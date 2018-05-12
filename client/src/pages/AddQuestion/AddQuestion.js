@@ -40,6 +40,14 @@ class AddQuestion extends Component {
       });
   }
 
+  handleDeleteQuestion = e => {
+    var url = "/api/cards/delete/" + e.target.id;
+    fetch(url, {
+      method: "DELETE"
+    }).then(response => response.json);
+    window.location.reload();
+  }
+
   render() {
     return (
       <div>
@@ -48,9 +56,14 @@ class AddQuestion extends Component {
         <div className="container">
           <div className="qholder">
             {this.state.userQuestions && (
-              <ul>
-                {this.state.userQuestions.map(q => <li>{q.question}</li>)}
-              </ul>
+              <div>
+                {this.state.userQuestions.map(q => 
+                  <p>
+                    <button id={q.id} onClick={this.handleDeleteQuestion}>x</button>
+                    {q.question}
+                  </p>
+                )}
+              </div>
             )}
 
             <CreateQuestion unitId={this.props.match.params.unitId} />
