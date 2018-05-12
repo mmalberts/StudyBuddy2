@@ -11,21 +11,14 @@ class QuestionPage extends React.Component {
   state = {
     title: "Vocabulary",
     user: this.props.user.firstName + " " + this.props.user.lastName,
-    question: "Wow, isn't this a great question?",
-    answerArr: [
-      "ok",
-      "e = mc^2",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin felis nisl, consequat eu aliquet vitae, pulvinar sed orci."
-    ],
-    correctAns: "ok",
     chosenAns: "",
     ansStatus: undefined,
     userQuestions: [],
+    counter: 0,
     progress: 65 // replace with equation: index of current question / total number of questions
   };
 
   componentDidMount() {
-    let self = this;
     var data = {
       UserId: this.props.match.params.unitId
     };
@@ -70,7 +63,7 @@ class QuestionPage extends React.Component {
   render() {
     return (
       <div className="fitpage">
-        <Navbar firstName={this.props.user.firstName} /> 
+        <Navbar firstName={this.props.user.firstName} />
 
         <div className="row info">
           <button className="white-button mini-title">
@@ -81,11 +74,11 @@ class QuestionPage extends React.Component {
 
         <div className="container text-center">
           <div className="row content">
-
-            {console.log("user question state: ", this.state.userQuestions)}
-            {this.state.userQuestions.map(ques => (
+            {this.state.userQuestions.map((ques, index) => (
               <div>
-                <h1 className="question">{ques.question}</h1>
+                <h1 className="question">
+                  {ques.question} index: {index}
+                </h1>
                 <button
                   key={ques.answer1}
                   className="outline-button answer"
@@ -113,13 +106,21 @@ class QuestionPage extends React.Component {
                   {ques.answer3}
                 </button>
               </div>
-
             ))}
           </div>
         </div>
 
         <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ width: this.state.progress + "%"}} aria-valuenow={this.state.progress} aria-valuemin="0" aria-valuemax="100">{this.state.progress}%</div>
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: this.state.progress + "%" }}
+            aria-valuenow={this.state.progress}
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            {this.state.progress}%
+          </div>
         </div>
       </div>
     );
