@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import "./questions.css";
 import { connect } from "react-redux";
+import Navbar from "../../components/Navbar";
+import "./QuestionPage.css";
 
 const mapStateToProps = state => {
   return { user: state[0] };
@@ -69,16 +69,7 @@ class QuestionPage extends React.Component {
   render() {
     return (
       <div className="fitpage">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        {/* <Navbar firstName={localStorage.getItem("user")} /> */}
-=======
         <Navbar firstName={this.props.user.firstName} />
->>>>>>> 1a0ef91... added redux to question components
-=======
-        {/* <Navbar firstName={this.props.user.firstName} /> */}
->>>>>>> b09518a... partial questions page, needs proper mapping of questions and answers
-
         <div className="row info">
           <button className="white-button mini-title">
             {this.state.title}
@@ -88,19 +79,16 @@ class QuestionPage extends React.Component {
 
         <div className="container text-center">
           <div className="row content">
-            {console.log("user question state: ", this.state.userQuestions)}
-            {this.state.userQuestions.map(ques => (
-              <div>
-                <h1 className="question">{ques.question}</h1>
-                <button
-                  key={ques.answer}
-                  className="outline-button answer"
-                  onClick={this.handleAnsClick}
-                  value={ques.answer}
-                >
-                  {ques.answer1}
-                </button>
-              </div>
+            <h1 className="question">{this.state.question}</h1>
+            {this.state.answerArr.map(answer => (
+              <button
+                key={answer}
+                className="answer"
+                onClick={this.handleAnsClick}
+                value={answer}
+              >
+                {answer}
+              </button>
             ))}
           </div>
         </div>
