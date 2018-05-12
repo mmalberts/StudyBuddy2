@@ -9,7 +9,6 @@ const mapStateToProps = state => {
 };
 
 class AddQuestion extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,41 +25,53 @@ class AddQuestion extends Component {
        fetch("/api/cards/" + this.props.match.params.unitId, {
           method: "POST",
           body: data
-      }).then(response => {
+      })
+       .then(response => {
           return response.json();         
-      }).then(responseJson => {
+      })
+       .then(responseJson => {
         console.log(responseJson);
         self.setState({
           userQuestions: responseJson
         })
-       }).catch(err => {
+       })
+       .catch(err => {
           console.log("Error: ", err);
       });
   }
 
-    render() {
-        return (
-            <div>
-                <Navbar firstName = {this.props.user.firstName}/>
+  handleDeleteQuestion = e => {
+    var url = "/api/cards/delete/" + e.target.id;
+    fetch(url, {
+      method: "DELETE"
+    }).then(response => response.json);
+    window.location.reload();
+  }
 
-                <div className="container">
-                    <div className="qholder">
-                        {this.state.userQuestions && (
-                            <ul>
-                                {this.state.userQuestions.map(q => 
-                                    <li>{q}</li>
-                                )}
-                            </ul>
-                        )}
-                    
-                        <CreateQuestion unitId={this.props.match.params.unitId} />
-                    </div>
-                </div>
-            </div>
-        );
-    };
+  render() {
+    return (
+      <div>
+        <Navbar firstName={this.props.user.firstName} />
+
+        <div className="container">
+          <div className="qholder">
+            {this.state.userQuestions && (
+              <div>
+                {this.state.userQuestions.map(q => 
+                  <p>
+                    <button id={q.id} onClick={this.handleDeleteQuestion}>x</button>
+                    {q.question}
+                  </p>
+                )}
+              </div>
+            )}
+            
+            <CreateQuestion unitId={this.props.match.params.unitId} />
+          </div>
+        </div>
+      </div>
+    );
+  };
 };
-
-
 
 export default connect(mapStateToProps)(AddQuestion);

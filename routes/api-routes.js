@@ -106,4 +106,14 @@ module.exports = app => {
 			res.json(result);
 		});
 	});
+
+	app.delete("/api/cards/delete/:id", (req, res) => {
+		db.Card.destroy({
+			where: {
+				id: req.params.id
+			}
+		}).then(result => {
+			res.json(result);
+		});
+	});
 };
