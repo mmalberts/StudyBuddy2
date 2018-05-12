@@ -2,7 +2,6 @@
 
 body {
     width: 100%;
-    height: 100vh;
     margin: 0px !important;
     padding: 0px;
     background: -webkit-linear-gradient(90deg, #7ac36e, #78c9b1);
@@ -105,6 +104,20 @@ button.white-button {
     color: #78c9b1;
 }
 
+button.oversized {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 25px !important;
+    border: 2px solid #ffffff;
+}
+
+button.oversized:hover {
+    background: #78c9b1;
+    color: white;
+    border: 2px solid #ffffff;
+}
+
 /* ------------------------------------ FORMS */
 
 input {
@@ -128,6 +141,11 @@ input:active, input:focus {
     outline: none;
 }
 
+input.form-input {
+    width: 100%;
+    margin: 7px auto;
+}
+
 /* ------------------------------------ MEDIA QUERIES */
 
 /* large devices <1200px */
@@ -136,10 +154,16 @@ input:active, input:focus {
 
 /* medium devices <992px */
 @media (max-width: 991px) { 
+    div.container {
+        width: 90% !important;
+    }
 }
 
 /* small devices <768px */
 @media (max-width: 767px) { 
+    div.container {
+        width: 95%!important;
+    }
 }
 
 /* tiny devices < 576px */

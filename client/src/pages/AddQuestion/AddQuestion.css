@@ -1,7 +1,8 @@
 /* ------------------------------------ ELEMENTS */
 
 div.qholder {
+	width: 100%;
     margin-top: 100px;
-    margin-bottom: 0px !important;
+    margin-bottom: 25px;
     color: #ffffff;
 }
