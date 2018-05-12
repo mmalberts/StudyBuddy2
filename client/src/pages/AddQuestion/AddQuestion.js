@@ -3,15 +3,21 @@ import CreateQuestion from "../../components/Question/CreateQuestion";
 import Navbar from "../../components/Navbar/Navbar";
 
 export default class AddQuestion extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+    this.state = {
+      userQuestions: ["q 1", "q 2", "q 3"]
+    };
   }
 
   render() {
     return (
       <div>
-        <Navbar />
-        <CreateQuestion unitId = {this.props.match.params.unitId}/>
+        {/* <Navbar /> */}
+        {this.state.userQuestions && (
+          <ul>{this.state.userQuestions.map(q => <li>{q}</li>)}</ul>
+        )}
+        <CreateQuestion unitId={this.props.match.params.unitId} />
       </div>
     );
   }
