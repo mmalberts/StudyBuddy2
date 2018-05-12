@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import "./Question.css";
 
 //TODO: 1) Store these questions in the database.
 // 2) Fetch the questions from the database into the Question.js component.
@@ -75,7 +76,7 @@ export default class Questions extends React.Component {
 
         <h3 className="qh3">what is the question?</h3>
         <input
-          className="addnew"
+          className="form-input"
           value={this.state.question}
           type="text"
           name="question"
@@ -83,7 +84,7 @@ export default class Questions extends React.Component {
         />
         <h3 className="qh3">what are the possible answers?</h3>
         <input
-          className="addnew"
+          className="form-input"
           value={this.state.answer1}
           onChange={this.handleChange}
           type="text"
@@ -91,7 +92,7 @@ export default class Questions extends React.Component {
           placeholder="1"
         />
         <input
-          className="addnew"
+          className="form-input"
           value={this.state.answer2}
           onChange={this.handleChange}
           type="text"
@@ -99,7 +100,7 @@ export default class Questions extends React.Component {
           placeholder="2"
         />
         <input
-          className="addnew"
+          className="form-input"
           value={this.state.answer3}
           onChange={this.handleChange}
           type="text"
@@ -108,7 +109,7 @@ export default class Questions extends React.Component {
         />
         <h3 className="qh3">which answer is correct?</h3>
         <input
-          className="addnew"
+          className="form-input"
           value={this.state.correctAnswer}
           type="text"
           name="correctAnswer"
@@ -117,7 +118,7 @@ export default class Questions extends React.Component {
         />
 
         <button
-          className="btn"
+          className="white-button save oversized"
           // onClick={() => this.saveAndIncrement(this.state)}
           onClick={this.saveAndIncrement}
         >
@@ -125,7 +126,7 @@ export default class Questions extends React.Component {
         </button>
 
         <button
-          className="white-button send oversized"
+          className="white-button create oversized"
           id="submit"
           onClick={this.props.saveQuestion}
         >
