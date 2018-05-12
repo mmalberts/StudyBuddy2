@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import CreateQuestion from "../../components/Question/CreateQuestion";
 import Navbar from "../../components/Navbar/Navbar";
 import "./AddQuestion.css";
+import { connect } from "react-redux";
 
-export default class AddQuestion extends Component {
+const mapStateToProps = state => {
+  return { user: state[0] };
+};
+
+class AddQuestion extends Component {
 
   constructor(props) {
     super(props);
@@ -37,7 +42,7 @@ export default class AddQuestion extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar firstName = {this.props.user.firstName}/>
 
                 <div className="container">
                     <div className="qholder">
@@ -55,4 +60,8 @@ export default class AddQuestion extends Component {
         );
     };
 };
+
+
+
+export default connect(mapStateToProps)(AddQuestion);
 
