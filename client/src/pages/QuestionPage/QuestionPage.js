@@ -1,11 +1,16 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import "./questions.css";
+import { connect } from "react-redux";
 
-export default class QuestionPage extends React.Component {
+const mapStateToProps = state => {
+  return { user: state[0] };
+};
+
+class QuestionPage extends React.Component {
   state = {
     title: "Vocabulary",
-    user: "Amanda Ramirez",
+    user: this.props.user.firstName + " " + this.props.user.lastName,
     question: "Wow, isn't this a great question?",
     answerArr: [
       "ok",
@@ -46,7 +51,11 @@ export default class QuestionPage extends React.Component {
   render() {
     return (
       <div className="fitpage">
+<<<<<<< HEAD
         {/* <Navbar firstName={localStorage.getItem("user")} /> */}
+=======
+        <Navbar firstName={this.props.user.firstName} />
+>>>>>>> 1a0ef91... added redux to question components
 
         <div className="row info">
           <button className="white-button mini-title">
@@ -74,3 +83,5 @@ export default class QuestionPage extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(QuestionPage);
