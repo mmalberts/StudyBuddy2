@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import "./questions.css";
 import { connect } from "react-redux";
+import Navbar from "../../components/Navbar";
+import "./QuestionPage.css";
 
 const mapStateToProps = state => {
   return { user: state[0] };
@@ -80,6 +80,7 @@ class QuestionPage extends React.Component {
 
         <div className="container text-center">
           <div className="row content">
+
             {console.log("user question state: ", this.state.userQuestions)}
             {this.state.userQuestions.map(ques => (
               <div>
@@ -93,6 +94,7 @@ class QuestionPage extends React.Component {
                   {ques.answer1}
                 </button>
               </div>
+
             ))}
           </div>
         </div>

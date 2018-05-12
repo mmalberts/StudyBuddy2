@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 import "./Question.css";
 
 //TODO: 1) Store these questions in the database.
@@ -17,7 +18,8 @@ export default class Questions extends React.Component {
       correctAnswer: "",
       UnitId: this.props.unitId,
       gotItRight: false,
-      cardId: 1
+      cardId: 1,
+      unitPageLink: "/unit/" + this.props.unitId
     };
   }
 
@@ -125,14 +127,16 @@ export default class Questions extends React.Component {
           Save Question{" "}
         </button>
 
-        <button
-          className="white-button create oversized"
-          id="submit"
-          onClick={this.props.saveQuestion}
-        >
-          create my flashcard set!{" "}
-        </button>
-      </div>
+        <Link to={this.state.unitPageLink}>
+          <button
+            className="white-button create oversized"
+            id="submit"
+            onClick={this.props.saveQuestion}
+          >
+            create my flashcard set!{" "}
+          </button>
+        </Link>
+        </div>
     );
   }
 }

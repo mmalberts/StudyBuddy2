@@ -63,54 +63,56 @@ class ConnectedAddUnit extends React.Component {
             <div>
                 <Navbar firstName={this.props.user.firstName} />
                 
-                <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <h2 className="formh2">creating a new unit...</h2>
+                <div className="container">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <h2 className="formh2">creating a new unit...</h2>
 
-                    <select 
-                        className="form-control"
-                        name="subjectName"
-                        id="subject"
-                        onChange={this.handleChange}
-                    >
-                        <option value="default">select a subject</option>
-                        <option value="Biology">Biology</option>
-                        <option value="English">English</option>
-                        <option value="History">History</option>
-                        <option value="Mathematics">Mathematics</option>
-                        <option value="Nutrition">Nutrition</option>
-                        <option value="Programming">Programming</option>
-                        <option value="Psychology">Psychology</option>
-                        <option value="Science">Science</option>
-                    </select>
-                    
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="name"
-                        name="unitName"
-                        onChange={this.handleChange}
-                        placeholder="name"
-                    />
+                        <select 
+                            className="form-control"
+                            name="subjectName"
+                            id="subject"
+                            onChange={this.handleChange}
+                        >
+                            <option value="default">select a subject</option>
+                            <option value="Biology">Biology</option>
+                            <option value="English">English</option>
+                            <option value="History">History</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Nutrition">Nutrition</option>
+                            <option value="Programming">Programming</option>
+                            <option value="Psychology">Psychology</option>
+                            <option value="Science">Science</option>
+                        </select>
+                        
+                        <input
+                            className="form-input"
+                            type="text"
+                            id="name"
+                            name="unitName"
+                            onChange={this.handleChange}
+                            placeholder="name"
+                        />
 
-                    <input
-                        className="form-input larger"
-                        type="text"
-                        id="description"
-                        name="description"
-                        onChange={this.handleChange}
-                        placeholder="description"
-                    />
+                        <input
+                            className="form-input larger"
+                            type="text"
+                            id="description"
+                            name="description"
+                            onChange={this.handleChange}
+                            placeholder="description"
+                        />
 
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="setbg"
-                        name="bg"
-                        onChange={this.handleChange}
-                        placeholder="background image url"
-                    />
-                    
-                    <button id="saveDeck" className="white-button create" onClick={this.saveTopic}>create unit</button>
+                        <input
+                            className="form-input"
+                            type="text"
+                            id="setbg"
+                            name="bg"
+                            onChange={this.handleChange}
+                            placeholder="background image url"
+                        />
+                        
+                        <button id="saveDeck" className="white-button oversized create" onClick={this.saveTopic}>create unit</button>
+                    </div>
                 </div>
             </div>
         ) : <Redirect to={{pathname:"/dashboard"}}/>
