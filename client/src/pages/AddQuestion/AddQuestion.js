@@ -13,9 +13,9 @@ export default class AddQuestion extends Component {
   render() {
     return (
       <div>
-        {/* <Navbar /> */}
+        <Navbar />
         {this.state.userQuestions && (
-          <ul>{this.state.userQuestions.map(q => <li>{q}</li>)}</ul>
+          <ul>{this.state.userQuestions.map(q => <li key={q}>{q}</li>)}</ul>
         )}
         <CreateQuestion unitId={this.props.match.params.unitId} />
       </div>
