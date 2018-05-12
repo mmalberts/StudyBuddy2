@@ -22,18 +22,6 @@ export default class Questions extends React.Component {
 
   saveAndIncrement = e => {
     e.preventDefault();
-    // let questions = this.props.questions.slice("");
-    // questions.push(question);
-    // let number = this.state.number + 1;
-    // this.setState({
-    //   question: "",
-    //   answer1: "",
-    //   answer2: "",
-    //   answer3: "",
-    //   correctAnswer: "",
-    //   number: number,
-    //   questions: questions
-    // });
     let self = this;
 
     let data = {
