@@ -95,4 +95,15 @@ module.exports = app => {
 			res.json(result);
 		});
 	});
+
+	// delete all cards with given unit id
+	app.delete("/api/cards/:unitId", (req, res) => {
+		db.Card.destroy({
+			where: {
+				UnitId: req.params.unitId
+			}
+		}).then(result => {
+			res.json(result);
+		});
+	});
 };
