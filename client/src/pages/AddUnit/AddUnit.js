@@ -1,6 +1,7 @@
 import React from "react";
 import { addUser } from "../../actions/index";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import "./AddUnit.css";
 
@@ -19,7 +20,8 @@ class ConnectedAddUnit extends React.Component {
         unitName: "",
         description: "",
         bg: "",
-        UserId: this.props.user.id
+        UserId: this.props.user.id,
+        unitAddSuccess: false
     };
 
     handleChange = e => {
@@ -49,6 +51,8 @@ class ConnectedAddUnit extends React.Component {
             if (response.status >= 400) {
                 throw new Error("Bad response from server.");
             }
+            this.setState({ unitAddSuccess: true });
+            console.log(this.state.unitAddSuccess);
             return response.json();
         }).catch(err => {
             console.log("Error: ", err);
@@ -56,7 +60,7 @@ class ConnectedAddUnit extends React.Component {
     };
 
     render() {
-        return (
+        return !this.state.unitAddSuccess ? (
             <div>
                 <Navbar firstName={this.props.user.firstName} />
                 
@@ -110,7 +114,7 @@ class ConnectedAddUnit extends React.Component {
                     <button id="saveDeck" className="white-button create" onClick={this.saveTopic}>create unit</button>
                 </div>
             </div>
-        );
+        ) : <Redirect to={{pathname:"/dashboard"}}/>
     };
 };
 
