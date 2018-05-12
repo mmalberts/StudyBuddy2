@@ -21,7 +21,8 @@ class QuestionPage extends React.Component {
     chosenAns: "",
     ansStatus: undefined,
     userQuestions: [],
-    progress: 65 // replace with equation: index of current question / total number of questions
+    progress: 65, // replace with equation: index of current question / total number of questions
+    score: 12
   };
 
   componentDidMount() {
@@ -75,10 +76,9 @@ class QuestionPage extends React.Component {
         <Navbar firstName={this.props.user.firstName} /> 
 
         <div className="row info">
-          <button className="white-button mini-title">
-            {this.state.title}
-          </button>
+          <button className="white-button mini-title">{this.state.title}</button>
           <h3 className="mini-byline">by {this.state.user}</h3>
+          <button className="white-button mini-title score">{this.state.score} / 15</button>
         </div>
 
         <div className="container text-center">
@@ -89,7 +89,7 @@ class QuestionPage extends React.Component {
               <div>
                 <h1 className="question">{ques.question}</h1>
                 <button
-                  key={ques.answer1}
+                  key={ques.question}
                   className="outline-button answer"
                   onClick={this.handleAnsClick}
                   value={ques.answer1}
