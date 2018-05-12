@@ -19,11 +19,6 @@ h2.formh2 {
 
 /* ------------------------------------ FORM */
 
-input.form-input {
-    width: 100%;
-    margin: 7px auto;
-}
-
 input.larger {
     height: 200px;
 }
@@ -31,7 +26,5 @@ input.larger {
 /* ------------------------------------ BUTTONS */
 
 button.create {
-    margin-top: 10px;
-    padding: 5px 20px !important;
-    font-size: 25px !important;
+    margin-top: 15px;
 }
