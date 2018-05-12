@@ -162,7 +162,7 @@ input.form-input {
 /* small devices <768px */
 @media (max-width: 767px) { 
     div.container {
-        width: 95%!important;
+        width: 95% !important;
     }
 }
 
