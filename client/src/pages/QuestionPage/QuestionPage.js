@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import "./questions.css";
 import { connect } from "react-redux";
+import Navbar from "../../components/Navbar";
+import "./QuestionPage.css";
 
 const mapStateToProps = state => {
   return { user: state[0] };
@@ -59,7 +59,7 @@ class QuestionPage extends React.Component {
             {this.state.answerArr.map(answer => (
               <button
                 key={answer}
-                className="outline-button answer"
+                className="answer"
                 onClick={this.handleAnsClick}
                 value={answer}
               >
