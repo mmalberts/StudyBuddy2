@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 
 class QuestionPage extends React.Component {
   state = {
-    title: "Vocabulary",
+    title: "",
     user: this.props.user.firstName + " " + this.props.user.lastName,
     question: "Wow, isn't this a great question?",
     answerArr: [
@@ -38,8 +38,10 @@ class QuestionPage extends React.Component {
       })
       .then(responseJson => {
         console.log("responseJson: ", responseJson);
+        console.log(responseJson[0].Unit.unitName);
         this.setState(() => ({
-          userQuestions: responseJson
+          userQuestions: responseJson,
+          title: responseJson[0].Unit.unitName
         }));
       })
       .catch(err => {

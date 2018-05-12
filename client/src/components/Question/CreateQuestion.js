@@ -63,6 +63,7 @@ export default class Questions extends React.Component {
       cardId: number
     });
     console.log("state number: ", this.state.cardId);
+    window.location.reload();
   };
 
   handleChange = e => {
