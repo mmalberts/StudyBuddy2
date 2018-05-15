@@ -51,10 +51,9 @@ class ConnectedAddUnit extends React.Component {
                 throw new Error("Bad response from server.");
             }
             this.setState({ unitAddSuccess: true });
-            console.log(this.state.unitAddSuccess);
             return response.json();
         }).catch(err => {
-            console.log("Error: ", err);
+            console.log("Error: " + err);
         });
     };
 

@@ -8,7 +8,7 @@ const DisplayFlashcards = props => {
         <div className="row">
             <h2 className="subheading dashboard">continue studying...</h2>
             <div className="flashcard-panel">
-                <Link to="/add">
+                <Link to="/addunit">
                     <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cardbox">
                         <div className="card">
                             <button className="white-button card-fill">create a<br/>new set of<br/> flashcards!</button>

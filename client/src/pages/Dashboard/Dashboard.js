@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return { addUser: user => dispatch(addUser(user))}     
+    return { addUser: user => dispatch(addUser(user)) };     
 };
 
 class ConnectedDashboard extends React.Component {
@@ -27,12 +27,13 @@ class ConnectedDashboard extends React.Component {
         fetch(cardQueryUrl, {
             method: "DELETE"
         }).then(response => response.json);
-
+            
         var unitQueryURL = "/api/units/" + e.target.id;
-
+        
         fetch(unitQueryURL, {
             method: "DELETE"
         }).then(response => response.json);
+        
         window.location.reload();
     };
 
@@ -71,7 +72,7 @@ class ConnectedDashboard extends React.Component {
                 filteredFlashcards: data
             });
         }).catch(err => {
-            console.log("Error: ", err);
+            console.log("Error: " + err);
         });
     };
 
@@ -104,7 +105,7 @@ class ConnectedDashboard extends React.Component {
                 filteredFlashcards: data
             });
         }).catch(err => {
-            console.log("Error: ", err);
+            console.log("Error: " + err);
         });
     }; 
     
