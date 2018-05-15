@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
+import Question from "../../components/Question/Question.js";
 import "./QuestionPage.css";
 
 const mapStateToProps = state => {
@@ -8,27 +9,23 @@ const mapStateToProps = state => {
 };
 
 class QuestionPage extends React.Component {
-  state = {
-    title: "",
-    user: this.props.user.firstName + " " + this.props.user.lastName,
-    question: "Wow, isn't this a great question?",
-    answerArr: [
-      "ok",
-      "e = mc^2",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin felis nisl, consequat eu aliquet vitae, pulvinar sed orci."
-    ],
-    correctAns: "ok",
-    chosenAns: "",
-    ansStatus: undefined,
-    userQuestions: [],
-    currentQuestion: 0,
-    totalQuestions: 0,
-    progress: 0,
-    score: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      user: this.props.user.firstName + " " + this.props.user.lastName,
+      ansStatus: undefined,
+      userQuestions: [],
+      num: 0,
+      currentQ: [],
+      currentQuestion: 0,
+      totalQuestions: 0,
+      progress: 0,
+      score: ""
+    };
+  }
 
   componentDidMount() {
-    let self = this;
     var data = {
       UserId: this.props.match.params.unitId
     };
@@ -37,120 +34,128 @@ class QuestionPage extends React.Component {
       body: data
     })
       .then(response => {
-        console.log(response);
         return response.json();
       })
       .then(responseJson => {
-        console.log("responseJson: ", responseJson);
-        console.log(responseJson[0].Unit.unitName);
         this.setState(() => ({
           userQuestions: responseJson,
           title: responseJson[0].Unit.unitName,
+          currentQ: responseJson[0],
           totalQuestions: responseJson.length
         }));
       })
       .catch(err => {
         console.log("Error: ", err);
       });
-
-      this.calculateScore();
-
+    this.calculateScore();
   }
 
-  calculateScore = () => {
-
-      let calcScore = 0;
-      let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
-
-      for(var i = 0; i < this.state.userQuestions.length; i++){
-        if(this.state.userQuestions[i].gotItRight){
-          calcScore++;
-        }
-      }
-
-      if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
-        this.setState({ progress: calcProgress });
-      } else {
-        this.setState({ progress: 0 });
-      }
-
-      this.setState({
-        score: calcScore,
-        currentQuestion: this.state.currentQuestion++,
-      })
-  }
-
-  handleAnsClick = e => {
-    var ans = e.target.value;
-    this.setState(() => ({
-      chosenAns: ans
-    }));
-    if (this.state.chosenAns === this.state.correctAns) {
+  resetState() {
+    var count = this.state.num + 1;
+    console.log("count:", count);
+    if (count < this.state.userQuestions.length) {
       this.setState(() => ({
-        ansStatus: true
+        num: this.state.num + 1,
+        currentQ: this.state.userQuestions[count]
       }));
     } else {
       this.setState(() => ({
-        ansStatus: false
+        num: this.state.num + 1
       }));
     }
-    console.log("correctAns: ", this.state.correctAns);
-    console.log("chosenAns: ", this.state.chosenAns);
-    console.log("ansStatus: ", this.state.ansStatus);
+  }
+
+  calculateScore = () => {
+    let calcScore = 0;
+    let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
+
+    for (var i = 0; i < this.state.userQuestions.length; i++) {
+      if (this.state.userQuestions[i].gotItRight) {
+        calcScore++;
+      }
+    }
+
+    if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
+      this.setState({ progress: calcProgress });
+    } else {
+      this.setState({ progress: 0 });
+    }
+
+    this.setState({
+      score: calcScore,
+      currentQuestion: this.state.currentQuestion++
+    });
+  };
+
+  handleAnsClick = e => {
+    let correctAnswer = e.correctAnswer;
+    let ans = e.chosenAns;
+    if (correctAnswer === ans) {
+      this.setState(
+        () => ({
+          ansStatus: true
+        }),
+        this.resetState,
+        this.calculateScore
+      );
+    } else {
+      this.setState(
+        () => ({
+          ansStatus: false
+        }),
+        this.resetState,
+        this.calculateScore
+      );
+    }
+    this.calculateScore();
   };
 
   render() {
     return (
       <div className="fitpage">
-        <Navbar firstName={this.props.user.firstName} /> 
+        <Navbar firstName={this.props.user.firstName} />
 
         <div className="row info">
-          <button className="white-button mini-title">{this.state.title}</button>
+          <button className="white-button mini-title">
+            {this.state.title}
+          </button>
           <h3 className="mini-byline">by {this.state.user}</h3>
-          <button className="white-button mini-title score">{this.state.score} / {this.state.totalQuestions}</button>
+          <button className="white-button mini-title score">
+            {this.state.score} / {this.state.totalQuestions}
+          </button>
         </div>
 
         <div className="container text-center">
           <div className="row content">
-
-            {console.log("user question state: ", this.state.userQuestions)}
-            {this.state.userQuestions.map(ques => (
-              <div>
-                <h1 className="question">{ques.question}</h1>
-                <button
-                  key={ques.question}
-                  className="outline-button answer"
-                  onClick={this.handleAnsClick}
-                  value={ques.answer1}
-                >
-                  {ques.answer1}
-                </button>
-
-                <button
-                  key={ques.answer2}
-                  className="outline-button answer"
-                  onClick={this.handleAnsClick}
-                  value={ques.answer2}
-                >
-                  {ques.answer2}
-                </button>
-
-                <button
-                  key={ques.answer3}
-                  className="outline-button answer"
-                  onClick={this.handleAnsClick}
-                  value={ques.answer3}
-                >
-                  {ques.answer3}
-                </button>
-              </div>
-
-            ))}
+            {/* {console.log("userQuestions: ", this.state.userQuestions)}
+            {console.log("currentQ: ", this.state.currentQ)} */}
+            {this.state.num < this.state.userQuestions.length ? (
+              <Question
+                key={this.state.currentQ.id}
+                question={this.state.currentQ.question}
+                answer1={this.state.currentQ.answer1}
+                answer2={this.state.currentQ.answer2}
+                answer3={this.state.currentQ.answer3}
+                correctAnswer={this.state.currentQ.correctAnswer}
+                handleAnsClick={this.handleAnsClick}
+              />
+            ) : (
+              <h1>end of questions</h1>
+            )}
           </div>
         </div>
 
         <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ width: this.state.progress + "%"}} aria-valuenow={this.state.progress} aria-valuemin="0" aria-valuemax="100">{this.state.progress}%</div>
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: this.state.progress + "%" }}
+            aria-valuenow={this.state.progress}
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            {this.state.progress}%
+          </div>
         </div>
       </div>
     );

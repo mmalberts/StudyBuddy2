@@ -4,28 +4,56 @@ import React from "react";
 export default class Question extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      correctAnswer: this.props.correctAnswer,
+      chosenAns: ""
+    };
+    this.handleAnsClick = this.handleAnsClick.bind(this);
   }
+
+  handleAnsClick(e) {
+    var chAns = e.target.value;
+    // this.setState(() => ({
+    //   chosenAnswer: chAns
+    // }));
+    let ans = {
+      correctAnswer: this.props.correctAnswer,
+      chosenAns: chAns
+    };
+
+    this.props.handleAnsClick(ans);
+  }
+
   render() {
     return (
       <div>
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <h2 className="qh2">question one</h2>
-        </div>
+        <div>
+          <h1 className="question">{this.props.question}</h1>
+          <button
+            className="outline-button answer"
+            onClick={this.handleAnsClick}
+            value={this.props.answer1}
+          >
+            {this.props.answer1}
+          </button>
 
-        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <h3 className="qh3">what is the question?</h3>
-          <input className="addnew" type="text" id="q1text" />
-          <h3 className="qh3">what are the possible answers?</h3>
-          <input className="addnew" type="text" id="q1a1" placeholder="1" />
-          <input className="addnew" type="text" id="q1a2" placeholder="2" />
-          <input className="addnew" type="text" id="q1a3" placeholder="3" />
-          <h3 className="qh3">which answer is correct?</h3>
-          <input
-            className="addnew"
-            type="text"
-            id="correct1"
-            placeholder="enter 1, 2, or 3"
-          />
+          <button
+            key={this.props.answer2}
+            className="outline-button answer"
+            onClick={this.handleAnsClick}
+            value={this.props.answer2}
+          >
+            {this.props.answer2}
+          </button>
+
+          <button
+            key={this.props.answer3}
+            className="outline-button answer"
+            onClick={this.handleAnsClick}
+            value={this.props.answer3}
+          >
+            {this.props.answer3}
+          </button>
         </div>
       </div>
     );
