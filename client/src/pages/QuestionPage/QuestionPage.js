@@ -69,45 +69,25 @@ class QuestionPage extends React.Component {
         let ans = e.chosenAns;
         let percent = this.state.progress + (Math.round(1 / this.state.totalQuestions * 100));
 
-        if (percent === 99) {
+        if (this.state.currentQuestion === this.state.totalQuestions - 1) {
             percent = 100;
         }
     
         if (correctAnswer === ans) {
             this.setState(() => ({
                 ansStatus: true,
+                currentQuestion: this.state.currentQuestion + 1,
                 progress: percent,
                 score: this.state.score + 1
             }), this.resetState);
         } else {
             this.setState(() => ({
                 ansStatus: false,
+                currentQuestion: this.state.currentQuestion + 1,
                 progress: percent
             }), this.resetState);
         }
     };
-
-  // calculateScore = () => {
-  //   let calcScore = 0;
-  //   let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
-
-  //   for (var i = 0; i < this.state.userQuestions.length; i++) {
-  //     if (this.state.userQuestions[i].gotItRight) {
-  //       calcScore++;
-  //     }
-  //   }
-
-  //   if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
-  //     this.setState({ progress: calcProgress });
-  //   } else {
-  //     this.setState({ progress: 0 });
-  //   }
-
-  //   this.setState({
-  //     score: calcScore,
-  //     currentQuestion: this.state.currentQuestion++
-  //   });
-  // };
 
     render() {
         return (

@@ -12,7 +12,7 @@ export default class Question extends React.Component {
         this.handleAnsClick = this.handleAnsClick.bind(this);
     };
 
-    handleAnsClick(e) {
+    handleAnsClick = e => {
         var chAns = e.target.value;
         
         let ans = {
@@ -31,7 +31,7 @@ export default class Question extends React.Component {
                     <button
                         className="outline-button answer"
                         onClick={this.handleAnsClick}
-                        value={this.props.answer1}
+                        value="1"
                     >
                         {this.props.answer1}
                     </button>
@@ -40,7 +40,7 @@ export default class Question extends React.Component {
                         key={this.props.answer2}
                         className="outline-button answer"
                         onClick={this.handleAnsClick}
-                        value={this.props.answer2}
+                        value="2"
                     >
                         {this.props.answer2}
                     </button>
@@ -49,7 +49,7 @@ export default class Question extends React.Component {
                         key={this.props.answer3}
                         className="outline-button answer"
                         onClick={this.handleAnsClick}
-                        value={this.props.answer3}
+                        value="3"
                     >
                         {this.props.answer3}
                     </button>
