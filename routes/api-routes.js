@@ -6,10 +6,10 @@ module.exports = app => {
 	// GET REQUESTS
 	// ---------------
 
-	// get units
+	// retrieve units
 	app.post("/api/units", (req, res) => {
 		var query = {};
-		query.UserId = req.body.user_id
+		query.UserId = req.body.user_id;
 		db.Unit.findAll({
 			where: query,
 			include: [db.User]
@@ -18,6 +18,7 @@ module.exports = app => {
 		});
 	});
 
+	// retrieve filtered flashcards
 	app.post("/api/units/filter", (req, res) => {
 		var query = {};
 		query.UserId = req.body.user_id;
@@ -30,7 +31,7 @@ module.exports = app => {
 		});
 	});
 
-	//Retrieve a single unit
+	// retrieve a single unit
 	app.post("/api/units/unit", (req, res) => {
 		var query = {};
 		query.id = req.body.id;
@@ -42,7 +43,7 @@ module.exports = app => {
 		});
 	});
 
-	// get cards based on unit id number
+	// retrieve flashcards based on unit id
 	app.post("/api/cards/:unitId", (req, res) => {
 		db.Card.findAll({
 			where: {
@@ -54,7 +55,7 @@ module.exports = app => {
 		});
 	});
 
-	// get all cards from all units (for debugging)
+	// retrieve all cards from all units (for debugging)
 	app.get("/api/cards", (req, res) => {
 		db.Card.findAll({}).then(cards => {
 			res.json(cards);
@@ -107,6 +108,7 @@ module.exports = app => {
 		});
 	});
 
+	// deletes a card with given card id
 	app.delete("/api/cards/delete/:id", (req, res) => {
 		db.Card.destroy({
 			where: {
