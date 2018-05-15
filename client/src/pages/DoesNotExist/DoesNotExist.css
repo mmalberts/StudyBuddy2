@@ -1,3 +1,5 @@
+/* ------------------------------------ GENERAL */
+
 .top {
     margin-top: 100px;
 }
@@ -6,6 +8,8 @@
     text-align: center;
     color: white;
 }
+
+/* ------------------------------------ HEADERS AND TEXT */
 
 h1 {
     font-size: 75px;

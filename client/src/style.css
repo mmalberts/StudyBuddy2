@@ -45,7 +45,7 @@ div.navbar {
     background: -moz-linear-gradient(135deg, #7ac36e, #78c9b1);
     background: -o-linear-gradient(135deg, #7ac36e, #78c9b1);
     background: linear-gradient(135deg, #7ac36e, #78c9b1);
-    color: white;
+    color: #ffffff;
 }
 
 /* ------------------------------------ HEADERS AND TEXT */
@@ -114,7 +114,7 @@ button.oversized {
 
 button.oversized:hover {
     background: #78c9b1;
-    color: white;
+    color: #ffffff;
     border: 2px solid #ffffff;
 }
 
