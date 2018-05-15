@@ -3,6 +3,9 @@ import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "../reducers/index";
 import storage from "redux-persist/lib/storage";
 
+//Creates a store with persistStorage that will
+//retain data on refresh
+
 const persistConfig = {
 	key: "root",
 	storage
