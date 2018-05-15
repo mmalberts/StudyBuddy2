@@ -11,7 +11,7 @@ export default class Questions extends React.Component {
             answer1: "",
             answer2: "",
             answer3: "",
-            correctAnswer: "",
+            correctAnswer: "1",
             UnitId: this.props.unitId,
             gotItRight: false,
             cardId: 1,
@@ -106,20 +106,23 @@ export default class Questions extends React.Component {
                 />
 
                 <h3 className="qh3">which answer is correct?</h3>
-                <input
-                    className="form-input"
-                    value={this.state.correctAnswer}
-                    type="text"
+                <select 
+                    className="form-control"
                     name="correctAnswer"
+                    value={this.state.correctAnswer}
+                    id="correct"
                     onChange={this.handleChange}
-                    placeholder="enter 1, 2, or 3"
-                />
+                >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
 
                 <button
                     className="white-button save oversized"
                     onClick={this.saveAndIncrement}
                 >
-                    save question{" "}
+                    save question
                 </button>
 
                 <Link to={this.state.unitPageLink}>
@@ -128,7 +131,7 @@ export default class Questions extends React.Component {
                         id="submit"
                         onClick={this.props.saveQuestion}
                     >
-                        create my flashcard set!{" "}
+                        create my flashcard set!
                     </button>
                 </Link>
             </div>
