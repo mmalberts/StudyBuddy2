@@ -8,6 +8,7 @@ div.navbar-light {
 h1.logo-dark {
     margin: 10px;
     font-size: 35px;
+    color: #78c9b1 !important;
 }
 
 div.nav-right {

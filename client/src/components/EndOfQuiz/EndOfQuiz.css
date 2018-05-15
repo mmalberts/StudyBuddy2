@@ -1,0 +1,16 @@
+/* ------------------------------------ HEADERS AND TEXT */
+
+h1, h2, h3 {
+    color: #ffffff;
+}
+
+h3 {
+	margin-top: 25px;
+	font-weight: bold;
+}
+
+/* ------------------------------------ HEADERS AND TEXT */
+
+button.continue {
+	margin-top: 25px;
+}
