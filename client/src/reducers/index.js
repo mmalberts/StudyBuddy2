@@ -1,3 +1,7 @@
+
+//Creates a new state that adds the user's first name,
+//last name, and email
+
 const rootReducer = (state = [], action) => {
   	switch (action.type) {
     	case "ADD_USER":
