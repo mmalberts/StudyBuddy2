@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Navbar from "../../components/Navbar";
 import Question from "../../components/Question/Question.js";
+import EndOfQuiz from "../../components/EndOfQuiz/EndOfQuiz";
 import "./QuestionPage.css";
 
 const mapStateToProps = state => {
@@ -21,7 +22,7 @@ class QuestionPage extends React.Component {
       currentQuestion: 0,
       totalQuestions: 0,
       progress: 0,
-      score: ""
+      score: 0
     };
   }
 
@@ -47,7 +48,7 @@ class QuestionPage extends React.Component {
       .catch(err => {
         console.log("Error: ", err);
       });
-    this.calculateScore();
+    // this.calculateScore();
   }
 
   resetState() {
@@ -65,28 +66,27 @@ class QuestionPage extends React.Component {
     }
   }
 
-  calculateScore = () => {
+  // calculateScore = () => {
+  //   let calcScore = 0;
+  //   let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
 
-      let calcScore = 0;
-      let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
+  //   for (var i = 0; i < this.state.userQuestions.length; i++) {
+  //     if (this.state.userQuestions[i].gotItRight) {
+  //       calcScore++;
+  //     }
+  //   }
 
-      for(var i = 0; i < this.state.userQuestions.length; i++){
-        if(this.state.userQuestions[i].gotItRight){
-          calcScore++;
-        }
-      }
+  //   if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
+  //     this.setState({ progress: calcProgress });
+  //   } else {
+  //     this.setState({ progress: 0 });
+  //   }
 
-      if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
-        this.setState({ progress: calcProgress });
-      } else {
-        this.setState({ progress: 0 });
-      }
-
-      this.setState({
-        score: calcScore,
-        currentQuestion: this.state.currentQuestion++,
-      })
-  }
+  //   this.setState({
+  //     score: calcScore,
+  //     currentQuestion: this.state.currentQuestion++
+  //   });
+  // };
 
   handleAnsClick = e => {
     let correctAnswer = e.correctAnswer;
@@ -94,21 +94,21 @@ class QuestionPage extends React.Component {
     if (correctAnswer === ans) {
       this.setState(
         () => ({
-          ansStatus: true
+          ansStatus: true,
+          progress: this.state.progress + 1,
+          score: this.state.score + 1
         }),
-        this.resetState,
-        this.calculateScore
+        this.resetState
       );
     } else {
       this.setState(
         () => ({
-          ansStatus: false
+          ansStatus: false,
+          progress: this.state.progress + 1
         }),
-        this.resetState,
-        this.calculateScore
+        this.resetState
       );
     }
-    this.calculateScore();
   };
 
   render() {
@@ -117,9 +117,13 @@ class QuestionPage extends React.Component {
         <Navbar firstName={this.props.user.firstName} />
 
         <div className="row info">
-          <button className="white-button mini-title">{this.state.title}</button>
+          <button className="white-button mini-title">
+            {this.state.title}
+          </button>
           <h3 className="mini-byline">by {this.state.user}</h3>
-          <button className="white-button mini-title score">{this.state.score} / {this.state.totalQuestions}</button>
+          <button className="white-button mini-title score">
+            {this.state.score} / {this.state.totalQuestions}
+          </button>
         </div>
 
         <div className="container text-center">
@@ -137,7 +141,7 @@ class QuestionPage extends React.Component {
                 handleAnsClick={this.handleAnsClick}
               />
             ) : (
-              <h1>end of questions</h1>
+              <EndOfQuiz score={this.state.score} />
             )}
           </div>
         </div>
