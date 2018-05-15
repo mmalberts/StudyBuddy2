@@ -2,11 +2,19 @@ var db = require("../models");
 var bcrypt = require("bcrypt");
 
 module.exports = app => {
+
+    //Retrieves all users in the database
+
     app.get("/api/users", (req, res) => {
         db.User.findAll({}).then(result => {
             res.json(result);
         });
     });
+
+    //Creates a user, ensures that passwords match
+    //when making a new user. Hashing is completed using
+    //the bcrypt NPM package. Checks to see if that specific
+    //email has been used before in a sign-in.
 
     app.post("/api/users", (req, res) => {
         var password = "";
@@ -46,19 +54,26 @@ module.exports = app => {
         }
     });
 
+    //Retrieves the user searching by email and
+    //ensures the passwords match
+
     app.post("/api/users/login", (req, res) => {
         var users = [];
      
-        db.User.findAll({}).then(result => {
+        db.User.findAll({
+                where: {
+                    email: req.body.email
+                }
+            }).then(result => {
             users = JSON.parse(JSON.stringify(result));
+            console.log(users);
             if (req.body === undefined){
                 res.json(new Error("User not found!"));
+            }         
+            else if (bcrypt.compareSync(req.body.password, users[0].password)) {
+                    return res.json(users[0]);
             }
-            for (var i = 0; i < users.length; i++) {
-                if (req.body.email === users[i].email && bcrypt.compareSync(req.body.password, users[i].password)) {
-                    return res.json(users[i]);
-                }
-            }
+            
             res.json(new Error("User not found!"));
         });
     });
