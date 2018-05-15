@@ -59,13 +59,7 @@ class AddQuestion extends Component {
               <div>
                 {this.state.userQuestions.map(q => (
                   <p>
-                    <button
-                      key={q.id}
-                      id={q.id}
-                      onClick={this.handleDeleteQuestion}
-                    >
-                      x
-                    </button>
+                    <button id={q.id} onClick={this.handleDeleteQuestion} className="white-delete">x</button>
                     {q.question}
                   </p>
                 ))}
