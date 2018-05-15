@@ -6,3 +6,12 @@ div.qholder {
     margin-bottom: 25px;
     color: #ffffff;
 }
+
+/* ------------------------------------ LIST */
+
+li.nobullet {
+	list-style-type: none;
+}
+
+/* ------------------------------------ BUTTON */
+

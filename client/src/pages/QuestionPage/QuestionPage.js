@@ -9,13 +9,15 @@ const mapStateToProps = state => {
 
 class QuestionPage extends React.Component {
   state = {
-    title: "Vocabulary",
+    title: "",
     user: this.props.user.firstName + " " + this.props.user.lastName,
     chosenAns: "",
     ansStatus: undefined,
     userQuestions: [],
-    counter: 0,
-    progress: 65 // replace with equation: index of current question / total number of questions
+    currentQuestion: 0,
+    totalQuestions: 0,
+    progress: 0,
+    score: ""
   };
 
   componentDidMount() {
@@ -32,14 +34,41 @@ class QuestionPage extends React.Component {
       })
       .then(responseJson => {
         console.log("responseJson: ", responseJson);
+        console.log(responseJson[0].Unit.unitName);
         this.setState(() => ({
-          userQuestions: responseJson
+          userQuestions: responseJson,
+          title: responseJson[0].Unit.unitName,
+          totalQuestions: responseJson.length
         }));
       })
       .catch(err => {
         console.log("Error: ", err);
       });
+
+    this.calculateScore();
   }
+
+  calculateScore = () => {
+    let calcScore = 0;
+    let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
+
+    for (var i = 0; i < this.state.userQuestions.length; i++) {
+      if (this.state.userQuestions[i].gotItRight) {
+        calcScore++;
+      }
+    }
+
+    if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
+      this.setState({ progress: calcProgress });
+    } else {
+      this.setState({ progress: 0 });
+    }
+
+    this.setState({
+      score: calcScore,
+      currentQuestion: this.state.currentQuestion++
+    });
+  };
 
   handleAnsClick = e => {
     var ans = e.target.value;
@@ -70,6 +99,9 @@ class QuestionPage extends React.Component {
             {this.state.title}
           </button>
           <h3 className="mini-byline">by {this.state.user}</h3>
+          <button className="white-button mini-title score">
+            {this.state.score} / {this.state.totalQuestions}
+          </button>
         </div>
 
         <div className="container text-center">
@@ -80,7 +112,7 @@ class QuestionPage extends React.Component {
                   {ques.question} index: {index}
                 </h1>
                 <button
-                  key={ques.answer1}
+                  key={ques.question}
                   className="outline-button answer"
                   onClick={this.handleAnsClick}
                   value={ques.answer1}

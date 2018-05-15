@@ -47,8 +47,8 @@ module.exports = app => {
 		db.Card.findAll({
 			where: {
 				UnitId: req.params.unitId
-			}
-			//include: [db.Unit]
+			},
+			include: [db.Unit]
 		}).then(cards => {
 			res.json(cards);
 		});
@@ -101,6 +101,16 @@ module.exports = app => {
 		db.Card.destroy({
 			where: {
 				UnitId: req.params.unitId
+			}
+		}).then(result => {
+			res.json(result);
+		});
+	});
+
+	app.delete("/api/cards/delete/:id", (req, res) => {
+		db.Card.destroy({
+			where: {
+				id: req.params.id
 			}
 		}).then(result => {
 			res.json(result);

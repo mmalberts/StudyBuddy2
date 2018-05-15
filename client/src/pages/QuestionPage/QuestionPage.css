@@ -2,11 +2,10 @@
 
 div.fitpage {
 	margin-bottom: 15px;
-	
 }
 
 div.info {
-    margin: 85px auto 25px 25px;
+    margin: 75px auto 25px 25px;
 }
 
 div.content {
@@ -20,9 +19,16 @@ div.content {
 
 button.mini-title {
     display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
     padding: 5px 20px !important;
     border-radius: 25px;
     text-transform: lowercase;
+}
+
+button.score {
+	position: absolute;
+	right: 25px;
 }
 
 button.answer {
@@ -30,10 +36,7 @@ button.answer {
 	width: 100%;
 	margin: 7px auto;
 	padding: 5px 20px !important;
-	background: -webkit-linear-gradient(135deg, #7ac36e, #78c9b1);
-    background: -moz-linear-gradient(135deg, #7ac36e, #78c9b1);
-    background: -o-linear-gradient(135deg, #7ac36e, #78c9b1);
-    background: linear-gradient(135deg, #7ac36e, #78c9b1);
+	background: transparent;
     color: white;
     border: 2px solid white;
     font-size: 17px !important;
@@ -59,7 +62,8 @@ h1.question {
 h3.mini-byline {
     display: inline-block;
     margin-top: 12px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
     font-size: 20px;
     text-transform: lowercase;
     color: #ffffff;
@@ -83,9 +87,39 @@ div.progress {
 }
 
 div.progress-bar {
+	min-width: 25px;
 	padding-right: 5px;
 	background: #ffffff;
 	text-align: right;
 	color: #78c9b1;
 	font-weight: bold;
+}
+
+/* ------------------------------------ MEDIA QUERIES */
+
+/* large devices <1200px */
+@media (max-width: 1199px) { 
+}
+
+/* medium devices <992px */
+@media (max-width: 991px) { 
+	button.mini-title {
+		display: block;
+		margin-top: 5px;
+	}
+}
+
+/* small devices <768px */
+@media (max-width: 767px) { 
+}
+
+/* tiny devices < 576px */
+@media (max-width: 575px) { 
+	button.score {
+		position: static;
+	}
+
+	h3.mini-byline {
+		display: none;
+	}
 }
