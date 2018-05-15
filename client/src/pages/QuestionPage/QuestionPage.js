@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import EndOfQuiz from "../../components/EndOfQuiz";
 import Navbar from "../../components/Navbar";
-import Question from "../../components/Question/Question.js";
-import EndOfQuiz from "../../components/EndOfQuiz/EndOfQuiz";
+import Question from "../../components/Question";
 import "./QuestionPage.css";
 
 const mapStateToProps = state => {
@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 class QuestionPage extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       title: "",
       user: this.props.user.firstName + " " + this.props.user.lastName,
@@ -30,6 +31,7 @@ class QuestionPage extends React.Component {
     var data = {
       UserId: this.props.match.params.unitId
     };
+
     fetch("/api/cards/" + this.props.match.params.unitId, {
       method: "POST",
       body: data
@@ -46,13 +48,13 @@ class QuestionPage extends React.Component {
         }));
       })
       .catch(err => {
-        console.log("Error: ", err);
+        console.log("Error: " + err);
       });
-    // this.calculateScore();
   }
 
   resetState() {
     var count = this.state.num + 1;
+
     if (count < this.state.userQuestions.length) {
       this.setState(() => ({
         num: this.state.num + 1,
@@ -65,38 +67,22 @@ class QuestionPage extends React.Component {
     }
   }
 
-  // calculateScore = () => {
-  //   let calcScore = 0;
-  //   let calcProgress = this.state.currentQuestion / this.state.totalQuestions;
-
-  //   for (var i = 0; i < this.state.userQuestions.length; i++) {
-  //     if (this.state.userQuestions[i].gotItRight) {
-  //       calcScore++;
-  //     }
-  //   }
-
-  //   if (this.state.currentQuestion > 0 && this.state.totalQuestions > 0) {
-  //     this.setState({ progress: calcProgress });
-  //   } else {
-  //     this.setState({ progress: 0 });
-  //   }
-
-  //   this.setState({
-  //     score: calcScore,
-  //     currentQuestion: this.state.currentQuestion++
-  //   });
-  // };
-
   handleAnsClick = e => {
     let correctAnswer = e.correctAnswer;
-
     let ans = e.chosenAns;
+    let percent =
+      this.state.progress + Math.round(1 / this.state.totalQuestions * 100);
+
+    if (this.state.currentQuestion === this.state.totalQuestions - 1) {
+      percent = 100;
+    }
 
     if (correctAnswer === ans) {
       this.setState(
         () => ({
           ansStatus: true,
-          progress: this.state.progress + 1,
+          currentQuestion: this.state.currentQuestion + 1,
+          progress: percent,
           score: this.state.score + 1
         }),
         this.resetState
@@ -105,7 +91,8 @@ class QuestionPage extends React.Component {
       this.setState(
         () => ({
           ansStatus: false,
-          progress: this.state.progress + 1
+          currentQuestion: this.state.currentQuestion + 1,
+          progress: percent
         }),
         this.resetState
       );
@@ -127,10 +114,8 @@ class QuestionPage extends React.Component {
           </button>
         </div>
 
-        <div className="container text-center">
+        <div className="container text-center ml-auto mr-auto">
           <div className="row content">
-            {/* {console.log("userQuestions: ", this.state.userQuestions)}
-            {console.log("currentQ: ", this.state.currentQ)} */}
             {this.state.num < this.state.userQuestions.length ? (
               <Question
                 key={this.state.currentQ.id}

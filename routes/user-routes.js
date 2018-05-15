@@ -15,7 +15,7 @@ module.exports = app => {
         createUser = pass => {
             db.User.findOrCreate({
                 where: {
-                    email: req.body.email,
+                    email: req.body.email
                 },
                 defaults: {
                     firstName: req.body.firstName,
@@ -39,7 +39,7 @@ module.exports = app => {
             createUser(password);
         };
 
-        if (req.body.password !== req.body.confirmPassword){
+        if (req.body.password !== req.body.confirmPassword) {
             throw new Error("Passwords must match!");
         } else {
             hashing();

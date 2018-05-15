@@ -24,14 +24,14 @@ class ConnectedLogin extends React.Component {
     handleLogin = e => {
         var data = {
             email: this.state.email,
-            password:this.state.password,
+            password: this.state.password,
         };
 
         fetch("/api/users/login", {
             method: "POST",
             headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
             body: JSON.stringify(data)
         }).then(response => {
