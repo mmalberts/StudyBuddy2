@@ -53,7 +53,6 @@ class QuestionPage extends React.Component {
 
   resetState() {
     var count = this.state.num + 1;
-    console.log("count:", count);
     if (count < this.state.userQuestions.length) {
       this.setState(() => ({
         num: this.state.num + 1,
@@ -90,7 +89,9 @@ class QuestionPage extends React.Component {
 
   handleAnsClick = e => {
     let correctAnswer = e.correctAnswer;
+
     let ans = e.chosenAns;
+
     if (correctAnswer === ans) {
       this.setState(
         () => ({

@@ -44,7 +44,7 @@ class AddQuestion extends Component {
       method: "DELETE"
     }).then(response => response.json);
     window.location.reload();
-  }
+  };
 
   render() {
     return (
@@ -55,12 +55,18 @@ class AddQuestion extends Component {
           <div className="qholder">
             {this.state.userQuestions && (
               <div>
-                {this.state.userQuestions.map(q => 
+                {this.state.userQuestions.map(q => (
                   <p>
-                    <button id={q.id} onClick={this.handleDeleteQuestion}>x</button>
+                    <button
+                      key={q.id}
+                      id={q.id}
+                      onClick={this.handleDeleteQuestion}
+                    >
+                      x
+                    </button>
                     {q.question}
                   </p>
-                )}
+                ))}
               </div>
             )}
             
