@@ -22,7 +22,7 @@ const SignupModal = props => {
                     <h1>Sorry, user aleady exists!</h1>
                     <button onClick={props.handleClearModal} className="gradient-button modalbutton">Oh no!</button>
                 </div>
-            )};
+            )}
         </Modal>
     );
 };
