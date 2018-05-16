@@ -14,7 +14,8 @@ class ConnectedUnit extends React.Component {
         description: "",
         user: this.props.user.firstName + " " + this.props.user.lastName,
         bg: "",
-        link: "./question"
+        link: "./question",
+        unitHasQuestions: false
     };
 
     componentDidMount() {
@@ -42,10 +43,38 @@ class ConnectedUnit extends React.Component {
         }).catch(err => {
             console.log("Error: " + err);
         });
+
+        this.checkIfCards();
     };
 
+    checkIfCards() {
+        let self = this;
+        var unitId = { id: Number(this.props.match.params.id) };
+
+        fetch("/api/cards/" + this.props.match.params.id, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(unitId)
+        }).then(response => {
+            if (response.status >= 400) {
+                throw new Error("Bad response from server.");
+            }
+            return response.json();
+        }).then(data => {
+            console.log(data);
+            if (data.length <= 0) {
+                this.setState({ unitHasQuestions: true });
+            }
+        }).catch(err => {
+            console.log("Error: " + err);
+        });        
+    }
+
     render() {
-        return (
+        return !this.state.unitHasQuestions ? (
             <div className="background unitpage" style={{ backgroundImage: "url(" + this.state.bg + ")" }}>
                 <Navbar firstName={this.props.user.firstName} />
 
@@ -72,7 +101,31 @@ class ConnectedUnit extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+        ) :             
+
+        <div className="background unitpage" style={{ backgroundImage: "url(" + this.state.bg + ")" }}>
+            <Navbar firstName={this.props.user.firstName} />
+
+            <div className="row">
+                <div className="about">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <button className="gradient-button set-title">{this.state.title}</button>
+                        <h3 className="byline">by {this.state.user}</h3>
+                    </div>
+
+
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                        <div className="description">
+                            {this.state.description}
+                            
+                            <Link to={"/addquestion/" + this.props.match.params.id}>
+                                <button className="gradient-button split">edit flashcards</button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     };
 };
 
