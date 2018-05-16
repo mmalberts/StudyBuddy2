@@ -6,16 +6,16 @@
 
 .error {
     text-align: center;
-    color: white;
+    color: #ffffff;
 }
 
 /* ------------------------------------ HEADERS AND TEXT */
 
-h1 {
+h1.dne {
     font-size: 75px;
     font-weight: bold;
 }
 
-h2 {
+h2.dne {
     font-size: 40px;
 }
