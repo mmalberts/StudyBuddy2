@@ -99,23 +99,23 @@ class QuestionPage extends React.Component {
                     <h3 className="mini-byline">by {this.state.user}</h3>
                     <button className="white-button mini-title score">{this.state.score} / {this.state.totalQuestions}</button>
                 </div>
-
+                
                 <div className="container text-center ml-auto mr-auto">
-                    <div className="row content">
-                        { this.state.num < this.state.userQuestions.length ? (
-                            <Question
-                                key={this.state.currentQ.id}
-                                question={this.state.currentQ.question}
-                                answer1={this.state.currentQ.answer1}
-                                answer2={this.state.currentQ.answer2}
-                                answer3={this.state.currentQ.answer3}
-                                correctAnswer={this.state.currentQ.correctAnswer}
-                                handleAnsClick={this.handleAnsClick}
-                            />
-                        ) : (
-                            <EndOfQuiz score={this.state.score} />
-                        )}
-                    </div>
+                  <div className="row content">
+                    {this.state.num < this.state.userQuestions.length ? (
+                      <Question
+                        key={this.state.currentQ.id}
+                        question={this.state.currentQ.question}
+                        answer1={this.state.currentQ.answer1}
+                        answer2={this.state.currentQ.answer2}
+                        answer3={this.state.currentQ.answer3}
+                        correctAnswer={this.state.currentQ.correctAnswer}
+                        handleAnsClick={this.handleAnsClick}
+                      />
+                    ) : (
+                      <EndOfQuiz score={this.state.score} total={this.state.totalQuestions} />
+                    )}
+                  </div>
                 </div>
 
                 <div className="progress">
