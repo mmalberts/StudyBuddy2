@@ -2,6 +2,7 @@ import React from "react";
 import { addUser } from "../../actions/index";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import "./AddUnit.css";
 
@@ -21,7 +22,8 @@ class ConnectedAddUnit extends React.Component {
         description: "",
         bg: "",
         UserId: this.props.user.id,
-        unitAddSuccess: false
+        unitAddSuccess: false,
+        unitLink:"./dashboard"
     };
 
     handleChange = e => {
@@ -112,6 +114,14 @@ class ConnectedAddUnit extends React.Component {
                         />
                         
                         <button id="saveDeck" className="white-button oversized create" onClick={this.saveTopic}>create unit</button>
+
+                        <Link to={this.state.unitLink}>
+                            <button
+                                className="white-button oversized create"
+                            >
+                                back
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

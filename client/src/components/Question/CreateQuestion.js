@@ -65,6 +65,10 @@ export default class Questions extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    backToUnit = {
+
+    }
+
     render() {
         return (
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -129,9 +133,8 @@ export default class Questions extends React.Component {
                     <button
                         className="white-button create oversized"
                         id="submit"
-                        onClick={this.props.saveQuestion}
                     >
-                        create my flashcard set!
+                        back
                     </button>
                 </Link>
             </div>

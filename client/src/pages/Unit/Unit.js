@@ -15,7 +15,8 @@ class ConnectedUnit extends React.Component {
         user: this.props.user.firstName + " " + this.props.user.lastName,
         bg: "",
         link: "./question",
-        unitHasQuestions: false
+        unitHasQuestions: false,
+        unitLink: "./dashboard"
     };
 
     componentDidMount() {
@@ -121,6 +122,7 @@ class ConnectedUnit extends React.Component {
                             <Link to={"/addquestion/" + this.props.match.params.id}>
                                 <button className="gradient-button split">edit flashcards</button>
                             </Link>
+
                         </div>
                     </div>
                 </div>
