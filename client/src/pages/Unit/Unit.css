@@ -34,7 +34,7 @@ button.set-title {
     font-weight: bold;
     border-radius: 50px;
     text-transform: lowercase;
-    border: 2px solid white;
+    border: 2px solid #ffffff;
 }
 
 button.split {
@@ -51,7 +51,7 @@ button.split {
 }
 
 button.split:hover {
-    background: white;
+    background: #ffffff;
     color: #78c9b1;
     border: 2px solid #78c9b1;
 }

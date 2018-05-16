@@ -27,8 +27,8 @@ class ConnectedDoesNotExist extends React.Component {
         return (
             <div>
             	<Navbar firstName={this.state.firstName}/>
-				<h1 className="error top">ERROR 404</h1>
-				<h2 className="error">Page does not exist!</h2>
+				<h1 className="error top dne">ERROR 404</h1>
+				<h2 className="error dne">Page does not exist!</h2>
             </div>
         );
     };
