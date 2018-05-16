@@ -19,7 +19,7 @@ const SignupModal = props => {
                 </div>
             ) : (
                 <div className="modalbox">
-                    <h1>Sorry, user aleady exists!</h1>
+                    <h1>Sorry, invalid login credentials! Please try again</h1>
                     <button onClick={props.handleClearModal} className="gradient-button modalbutton">Oh no!</button>
                 </div>
             )}
