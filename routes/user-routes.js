@@ -35,7 +35,8 @@ module.exports = app => {
                 if (created) {
                     res.json(result[0]);
                 } else {
-                    throw new Error("That email has already been used!");
+                    //throw new Error("That email has already been used!");
+                    res.status(400).send("That email has already been used!");
                 }
             });
         };

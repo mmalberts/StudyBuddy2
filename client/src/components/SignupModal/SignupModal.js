@@ -6,7 +6,7 @@ import "./SignupModal.css";
 const SignupModal = props => {
     return (
         <Modal
-            isOpen={props.confirmSignup}
+            isOpen={props.openModal}
             contentLabel="Confirm Signup"
             onRequestClose={props.handleClearModal}
             className="modalpanel"
