@@ -32,3 +32,10 @@ button.white-delete:hover {
     background: linear-gradient(135deg, #7ac36e, #78c9b1);
     color: #ffffff;
 }
+
+/* ------------------------------------ HEADERS AND TEXT */
+
+h2.spaced {
+	margin-bottom: 15px;
+	margin-left: 10px;
+}

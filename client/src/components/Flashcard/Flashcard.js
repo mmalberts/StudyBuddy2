@@ -9,12 +9,14 @@ const Flashcard = props => {
 
     return (
         <div className="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cardbox">
-            <div className={classnames("card", "card-default")} style={cardBg}>
-                <Link to={props.cardLink}>
+        <button className="gradient-button delete" id={props.id} onClick={props.handleDeleteButton}>x</button>
+        
+            <Link to={props.cardLink}>
+                <div className={classnames("card", "card-default")} style={cardBg}>
+                
                     <button className="white-button card-title">{props.flashcardText}</button>
-                </Link>
-                <button className="gradient-button delete" id={props.id} onClick={props.handleDeleteButton}>x</button>
-            </div>
+                </div>
+            </Link>
         </div>
     );
 };
