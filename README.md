@@ -1,42 +1,31 @@
-# Create React Express App
+# StudyBuddy
+A fully-responsive application designed to help users study. Users can create their own sets of flashcards and use them to review important concepts.
 
-## About This Boilerplate
+[Study Buddy](https://studdy-buddy-nw.herokuapp.com/)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+# Local Deployment
+1 - Enter the following command in the root directory. Once all packages have finished installing, repeat this step in the "client" folder.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+    $ yarn install
 
-## Starting the app locally
+2 - Return to the root directory and enter the following command.
+    
+    $ yarn start
 
-Start by installing front and backend dependencies. While in this directory, run the following commands:
-
-```
-yarn install
-cd client
-yarn install
-cd ..
-``
-
-After both installations complete, run the following command in your terminal:
-
-```
-yarn start
-```
-
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-After confirming that you have an up to date git repository and a Heroku app created, complete the following:
-
-1. Build the React app for production by running the following command:
-
-```
-yarn build
-```
-
-2. Add and commit all changes to git
-
-3. Push to Heroku
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
+# Technologies Used
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+* jQuery
+* AJAX
+* APIs
+* Node.js / Nodemon
+* Node.js packages (see above)
+* Express.js
+* React.js
+* MySQL
+* Sequelize
+* Bcrypt
+* Heroku
+* JawsDB
