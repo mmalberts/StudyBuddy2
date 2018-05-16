@@ -1,10 +1,10 @@
 /* ------------------------------------ HEADERS AND TEXT */
 
-h1, h2, h3 {
+.end {
     color: #ffffff;
 }
 
-h3 {
+h3.end {
 	margin-top: 25px;
 	font-weight: bold;
 }
