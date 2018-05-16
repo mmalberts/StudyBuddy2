@@ -127,7 +127,7 @@ class QuestionPage extends React.Component {
                 handleAnsClick={this.handleAnsClick}
               />
             ) : (
-              <EndOfQuiz score={this.state.score} />
+              <EndOfQuiz score={this.state.score} total={this.state.totalQuestions} />
             )}
           </div>
         </div>

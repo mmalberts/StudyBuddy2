@@ -50,6 +50,10 @@ div.navbar {
 
 /* ------------------------------------ HEADERS AND TEXT */
 
+h1, h2, h3 {
+    color: #78c9b1;
+}
+
 h2.subheading {
     margin-bottom: 15px;
     font-size: 35px;
