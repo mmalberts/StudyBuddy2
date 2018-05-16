@@ -54,7 +54,8 @@ class UserLogin extends React.Component {
 
 class Signup extends React.Component {
     state = {
-        confirmSignup: undefined //used for modal
+        confirmSignup: undefined, //used for modal
+        openModal: false
     };
 
     handleChange = e => {
@@ -63,7 +64,7 @@ class Signup extends React.Component {
     };
 
     handleClearModal = () => {
-        this.setState({ confirmSignup: undefined });
+        this.setState({ confirmSignup: undefined, openModal: false });
         window.location.reload();
     };
 
@@ -78,7 +79,7 @@ class Signup extends React.Component {
             confirmPassword: this.state.confirmPassword
         };
 
-        this.setState({ confirmSignup: true });
+      
 
         fetch("/api/users", {
             method: "POST",
@@ -89,10 +90,16 @@ class Signup extends React.Component {
             body: JSON.stringify(data)
         }).then(response => {
             if (response.status >= 400) {
-                this.setState({ confirmSignup: false });
-                throw new Error("Bad response from server.");
+                this.setState({ confirmSignup: false, openModal: true });
+                console.log('here');
+                
+                throw new Error("Bad login");
             }
-            return response.json();
+            else{
+                this.setState({ confirmSignup: true, openModal: true });
+                return response.json();
+            }
+
         }).catch(err => {
             console.log("Error: " + err);
         });
@@ -147,6 +154,7 @@ class Signup extends React.Component {
                     <SignupModal
                         confirmSignup={this.state.confirmSignup}
                         handleClearModal={this.handleClearModal}
+                        openModal={this.state.openModal}
                     />
                 </div>
             </div>
