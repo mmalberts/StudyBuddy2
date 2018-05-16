@@ -6,11 +6,11 @@ A fully-responsive application designed to help users study. Users can create th
 # Local Deployment
 1 - Enter the following command in the root directory. Once all packages have finished installing, repeat this step in the "client" folder.
 
-    $ yarn install
+    yarn install
 
 2 - Return to the root directory and enter the following command.
     
-    $ yarn start
+    yarn start
 
 # Technologies Used
 * HTML
