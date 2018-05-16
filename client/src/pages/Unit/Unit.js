@@ -49,7 +49,6 @@ class ConnectedUnit extends React.Component {
     };
 
     checkIfCards() {
-        let self = this;
         var unitId = { id: Number(this.props.match.params.id) };
 
         fetch("/api/cards/" + this.props.match.params.id, {
@@ -65,7 +64,6 @@ class ConnectedUnit extends React.Component {
             }
             return response.json();
         }).then(data => {
-            console.log(data);
             if (data.length <= 0) {
                 this.setState({ unitHasQuestions: true });
             }

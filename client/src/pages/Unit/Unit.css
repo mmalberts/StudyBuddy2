@@ -19,6 +19,10 @@ div.description {
 }
 
 div.unitpage {
+	background: -webkit-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: -moz-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: -o-linear-gradient(135deg, #7ac36e, #78c9b1);
+    background: linear-gradient(135deg, #7ac36e, #78c9b1);
     background-repeat: no-repeat;
     background-position: left top;
     background-size: cover;
