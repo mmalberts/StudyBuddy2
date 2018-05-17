@@ -67,8 +67,8 @@ module.exports = app => {
                 }
             }).then(result => {
             users = JSON.parse(JSON.stringify(result));
-            console.log(users);
-            if (req.body === undefined){
+
+            if (!users[0]){
                 res.json(new Error("User not found!"));
             }         
             else if (bcrypt.compareSync(req.body.password, users[0].password)) {

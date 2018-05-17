@@ -1,4 +1,5 @@
 import React from "react";
+import SignupModal from "../../components/SignupModal";
 import { addUser } from "../../actions/index";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
@@ -13,7 +14,14 @@ class ConnectedLogin extends React.Component {
        password: "",
        id: "",
        firstName: "",
-       signedIn: false
+       signedIn: false, 
+       wrongLogIn: undefined, 
+       openModal: false
+    };
+
+    handleClearModal = () => {
+        this.setState({ wrongLogIn: undefined, openModal: false });
+        window.location.reload();
     };
 
     handleChange = e => {
@@ -48,7 +56,7 @@ class ConnectedLogin extends React.Component {
                 });
                 this.setState({ signedIn: true });
             } else {
-                alert("Wrong log-in information! Please try again!");
+                this.setState({wrongLogIn:false, openModal: true});
             }
         }).catch(err => {
             console.log("Error: " + err);
@@ -63,6 +71,12 @@ class ConnectedLogin extends React.Component {
                 <input type="password" id="password" placeholder="password" name="password" onChange={this.handleChange}/>
                 <button id="login-send" className="send" onClick={this.handleLogin}>log me in!</button>
             </div>
+
+            <SignupModal
+                confirmSignup={this.state.wrongLogIn}
+                handleClearModal={this.handleClearModal}
+                openModal={this.state.openModal}
+            />
         </div> ) : <Redirect push to={{pathname:"/dashboard"}}/>
     };
 };
