@@ -1,7 +1,7 @@
 # StudyBuddy
 A fully-responsive application designed to help users study. Users can create their own sets of flashcards and use them to review important concepts.
 
-[Study Buddy](https://studdy-buddy-nw.herokuapp.com/)
+[Study Buddy](https://study-buddy-nw.herokuapp.com/)
 
 # Local Deployment
 1 - Enter the following command in the root directory. Once all packages have finished installing, repeat this step in the "client" folder.
