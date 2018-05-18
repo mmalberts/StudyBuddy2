@@ -24,6 +24,7 @@ A fully-responsive application designed to help users study. Users can create th
 * Node.js packages (see above)
 * Express.js
 * React.js
+* Redux
 * MySQL
 * Sequelize
 * Bcrypt
